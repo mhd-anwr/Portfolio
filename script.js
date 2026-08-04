@@ -1,485 +1,553 @@
 /* ==========================================================================
    MUHAMMED ANWAR — GRAPHIC DESIGNER & UI/UX DESIGNER
-   Awwwards Interactive JavaScript Engine
-   GSAP + ScrollTrigger + Lenis + Modals + Physics
+   Portfolio Interactive Functionality & Animations
    ========================================================================== */
 
-window.addEventListener('load', () => {
+gsap.registerPlugin(ScrollTrigger);
 
-    // ----------------------------------------------------------------------
-    // 1. GSAP & Lenis Smooth Scroll Setup
-    // ----------------------------------------------------------------------
-    // ----------------------------------------------------------------------
-    // 1. GSAP & Lenis Smooth Scroll Setup (Safe Version)
-    // ----------------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
 
-    gsap.registerPlugin(ScrollTrigger);
+    // --------------------------------------------------
+    // 1. PRELOADER ANIMATION
+    // --------------------------------------------------
+    const preloader = document.getElementById("preloader");
+    const loaderProgress = document.getElementById("loader-progress");
+    const loaderPercent = document.getElementById("loader-percent");
 
-    let lenis = null;
-
-    if (typeof Lenis !== "undefined") {
-
-        lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: "vertical",
-            gestureOrientation: "vertical",
-            smoothWheel: true,
-        });
-
-        lenis.on("scroll", ScrollTrigger.update);
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-
-    } else {
-
-        console.warn("Lenis not loaded. Using native scrolling.");
-
-    }
-
-    // ----------------------------------------------------------------------
-    // 2. Preloader Animation & Reveal Timeline
-    // ----------------------------------------------------------------------
-    const loaderProgress = document.getElementById('loader-progress');
-    const loaderPercent = document.getElementById('loader-percent');
-    const preloader = document.getElementById('preloader');
-
-    let percent = 0;
+    let progress = 0;
     const interval = setInterval(() => {
-        percent += Math.floor(Math.random() * 14) + 1;
-        if (percent > 100) percent = 100;
-
-        if (loaderProgress) loaderProgress.style.width = `${percent}%`;
-        if (loaderPercent) loaderPercent.textContent = percent;
-
-        if (percent === 100) {
+        progress += Math.floor(Math.random() * 15) + 10;
+        if (progress >= 100) {
+            progress = 100;
             clearInterval(interval);
+            if (loaderProgress) loaderProgress.style.width = "100%";
+            if (loaderPercent) loaderPercent.textContent = "100";
 
-            // Hide preloader animation
-            gsap.timeline()
-                .to(preloader, {
-                    yPercent: -100,
-                    duration: 1.1,
-                    ease: "power4.inOut",
-                    delay: 0.2
-                })
-                .from('.reveal-item', {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    stagger: 0.12,
-                    ease: "power3.out"
-                }, "-=0.5");
+            setTimeout(() => {
+                // Trigger 0% to 100% opacity hero animation
+                initHeroAnimations();
+
+                if (preloader) {
+                    preloader.style.pointerEvents = "none";
+                    gsap.to(preloader, {
+                        opacity: 0,
+                        duration: 0.4,
+                        ease: "power2.out",
+                        onComplete: () => {
+                            preloader.style.display = "none";
+                            ScrollTrigger.refresh();
+                        }
+                    });
+                }
+            }, 100);
+        } else {
+            if (loaderProgress) loaderProgress.style.width = `${progress}%`;
+            if (loaderPercent) loaderPercent.textContent = `${progress}`;
         }
-    }, 30);
+    }, 25);
 
-    // ----------------------------------------------------------------------
-    // 3. Custom Dual-Ring Cursor with Contextual Text
-    // ----------------------------------------------------------------------
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    const cursorText = document.getElementById('cursor-text');
+    // --------------------------------------------------
+    // 2. DUAL-RING CUSTOM CURSOR
+    // --------------------------------------------------
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorRing = document.getElementById("cursor-ring");
+    const cursorText = document.getElementById("cursor-text");
 
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    if (cursorDot && cursorRing) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
 
-        if (cursorDot) {
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-        }
-    });
+            gsap.to(cursorDot, {
+                x: mouseX,
+                y: mouseY,
+                duration: 0.1,
+                ease: "power1.out"
+            });
+        });
 
-    function renderCursorRing() {
-        ringX += (mouseX - ringX) * 0.15;
-        ringY += (mouseY - ringY) * 0.15;
+        gsap.ticker.add(() => {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
 
-        if (cursorRing) {
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
-        }
+            gsap.set(cursorRing, {
+                x: ringX,
+                y: ringY
+            });
+        });
 
-        requestAnimationFrame(renderCursorRing);
+        // Hover text effect for cursor
+        const interactiveElements = document.querySelectorAll("[data-cursor-text], a, button, .project-card-trigger, .filter-btn");
+
+        interactiveElements.forEach((el) => {
+            el.addEventListener("mouseenter", () => {
+                const text = el.getAttribute("data-cursor-text");
+                if (text && cursorText) {
+                    cursorText.textContent = text;
+                    cursorRing.classList.add("active-hover");
+                } else {
+                    cursorRing.classList.add("active-hover");
+                    if (cursorText) cursorText.textContent = "";
+                }
+            });
+
+            el.addEventListener("mouseleave", () => {
+                cursorRing.classList.remove("active-hover");
+                if (cursorText) cursorText.textContent = "";
+            });
+        });
     }
-    renderCursorRing();
 
-    // Contextual Hover Badges
-    const hoverElements = document.querySelectorAll('[data-cursor-text]');
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            const text = el.getAttribute('data-cursor-text');
-            if (cursorText) cursorText.textContent = text;
-            if (cursorRing) cursorRing.classList.add('active-hover');
-        });
+    // --------------------------------------------------
+    // 3. MAGNETIC BUTTONS & ELEMENTS
+    // --------------------------------------------------
+    const magneticItems = document.querySelectorAll(".magnetic");
 
-        el.addEventListener('mouseleave', () => {
-            if (cursorRing) cursorRing.classList.remove('active-hover');
-            if (cursorText) cursorText.textContent = '';
-        });
-    });
-
-    // ----------------------------------------------------------------------
-    // 4. Magnetic Physics Effect
-    // ----------------------------------------------------------------------
-    const magneticElements = document.querySelectorAll('.magnetic');
-
-    magneticElements.forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
+    magneticItems.forEach((item) => {
+        item.addEventListener("mousemove", (e) => {
+            const rect = item.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
 
-            gsap.to(el, {
+            gsap.to(item, {
                 x: x * 0.3,
                 y: y * 0.3,
-                duration: 0.4,
+                duration: 0.35,
                 ease: "power2.out"
             });
         });
 
-        el.addEventListener('mouseleave', () => {
-            gsap.to(el, {
+        item.addEventListener("mouseleave", () => {
+            gsap.to(item, {
                 x: 0,
                 y: 0,
-                duration: 0.6,
+                duration: 0.5,
                 ease: "elastic.out(1, 0.4)"
             });
         });
     });
 
-    // ----------------------------------------------------------------------
-    // 5. ScrollTrigger Section Animations
-    // ----------------------------------------------------------------------
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => {
-        const reveals = sec.querySelectorAll('.reveal-item');
-        if (reveals.length > 0) {
-            gsap.from(reveals, {
-                scrollTrigger: {
-                    trigger: sec,
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                },
-                y: 40,
-                opacity: 0,
-                duration: 0.9,
-                stagger: 0.1,
-                ease: "power3.out"
+    // --------------------------------------------------
+    // 4. 3D CARD TILT EFFECT
+    // --------------------------------------------------
+    const tiltCards = document.querySelectorAll(".hover-tilt");
+
+    tiltCards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+
+            gsap.to(card, {
+                rotateX: rotateX,
+                rotateY: rotateY,
+                transformPerspective: 1000,
+                duration: 0.4,
+                ease: "power2.out"
             });
-        }
+        });
+
+        card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            });
+        });
     });
 
-    // ----------------------------------------------------------------------
-    // 6. Project Bento Grid Filtering
-    // ----------------------------------------------------------------------
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const workCards = document.querySelectorAll('.bento-work-card');
+    // --------------------------------------------------
+    // 5. GSAP HERO (0% to 100% OPACITY ANIMATION) & SCROLL REVEAL
+    // --------------------------------------------------
+    let heroAnimated = false;
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    function initHeroAnimations() {
+        if (heroAnimated) return;
+        heroAnimated = true;
 
-            const filter = btn.getAttribute('data-filter');
+        const heroElements = document.querySelectorAll(
+            ".hero-portrait-col, .hero-eyebrow, .hero-greeting, .hero-display-heading, .hero-subtitle, .hero-bio-snippet, .hero-actions, .hero-skills-strip"
+        );
 
-            workCards.forEach(card => {
-                const cat = card.getAttribute('data-category');
+        // Smooth 0% (opacity: 0) to 100% (opacity: 1) transition with clearProps to lock at 100% native opacity
+        gsap.fromTo(
+            heroElements,
+            {
+                opacity: 0,
+                y: 25
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.08,
+                ease: "power3.out",
+                clearProps: "all"
+            }
+        );
+    }
 
-                if (filter === 'all' || filter === cat) {
+    // Fallback trigger in case preloader is bypassed
+    setTimeout(() => {
+        initHeroAnimations();
+    }, 600);
+
+    // Scroll reveal for all other sections
+    gsap.utils.toArray("section:not(.hero-section)").forEach((section) => {
+        const items = section.querySelectorAll(".reveal-item");
+        if (!items.length) return;
+
+        gsap.from(items, {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                once: true
+            }
+        });
+    });
+
+    // --------------------------------------------------
+    // 6. PROJECT FILTER TABS
+    // --------------------------------------------------
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".bento-work-card");
+
+    filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filterValue = btn.getAttribute("data-filter");
+
+            projectCards.forEach((card) => {
+                const category = card.getAttribute("data-category");
+
+                if (filterValue === "all" || category === filterValue) {
                     gsap.to(card, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.4,
                         display: "flex",
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
                         ease: "power2.out"
                     });
                 } else {
                     gsap.to(card, {
-                        scale: 0.9,
                         opacity: 0,
+                        scale: 0.95,
                         duration: 0.3,
-                        display: "none",
-                        ease: "power2.in"
+                        ease: "power2.in",
+                        onComplete: () => {
+                            card.style.display = "none";
+                        }
                     });
                 }
             });
         });
     });
 
-    // ----------------------------------------------------------------------
-    // 7. Project Detail Lightbox Modal Data & Controller
-    // ----------------------------------------------------------------------
-    const projectData = {
+    // --------------------------------------------------
+    // 7. PROJECT DATA & LIGHTBOX MODAL
+    // --------------------------------------------------
+    const projectsData = {
         tea_cafe: {
-            category: "BRAND IDENTITY & PACKAGING",
             title: "Tea Café Branding",
-            role: "Brand Identity & Packaging Design",
-            tools: "Illustrator, Photoshop, Figma",
-            overview: "A comprehensive brand identity system for an artisanal tea lounge. Created with a focus on serenity, organic textures, and traditional tea ceremony culture. Included custom logo mark creation, organic tea canister packaging design, ceramic tableware motifs, brand guidelines, and store collateral.",
-            tags: ["Brand Identity", "Packaging", "Visual System", "Typography", "Print Design"],
-            image: "assets/images/tea_cafe.jpg"
+            category: "BRAND IDENTITY",
+            role: "Brand Identity & Packaging",
+            tools: "Illustrator & Photoshop",
+            image: "assets/images/tea_cafe.jpg",
+            overview: "Comprehensive brand identity system, organic tea packaging design, ceramic tableware motifs, and store collateral for an artisanal tea lounge.",
+            tags: ["BRAND IDENTITY", "PACKAGING", "VISUAL SYSTEM", "CREATIVE DIRECTION"]
         },
         logos: {
-            category: "LOGOFOLIO & MARKS",
             title: "Logo Collection",
-            role: "Vector Logomarks & Brand Icons",
+            category: "LOGOFOLIO",
+            role: "Logo & Mark Design",
             tools: "Adobe Illustrator",
-            overview: "A curated logofolio of minimalist geometric logos, corporate marks, and vector symbols created for tech startups, coffee shops, and lifestyle brands. Each logo is constructed with mathematical grid alignment to guarantee scalable elegance across print and digital media.",
-            tags: ["Logomarks", "Vector Design", "Grid Alignment", "Brand Identity"],
-            image: "assets/images/logo_collection.jpg"
+            image: "assets/images/logo_collection.jpg",
+            overview: "A curated collection of minimalist logos, geometric marks, and corporate symbols designed with mathematical grid precision.",
+            tags: ["LOGOMARKS", "VECTOR DESIGN", "GRID SYSTEMS", "BRAND IDENTITY"]
         },
         social: {
-            category: "GRAPHIC DESIGN",
             title: "Social Media Designs",
-            role: "Digital Campaign & Content Strategy",
-            tools: "Photoshop, Canva, Illustrator",
-            overview: "High-impact social media campaign layouts, multi-slide Instagram carousel series, and promotional templates tailored for brand engagement and aesthetic grid consistency.",
-            tags: ["Social Content", "Grid Strategy", "Editorial Layout", "Visual Campaign"],
-            image: "assets/images/social_media.jpg"
+            category: "GRAPHIC DESIGN",
+            role: "Social Content & Strategy",
+            tools: "Photoshop & Canva",
+            image: "assets/images/social_media.jpg",
+            overview: "High-impact social media campaign layouts, carousel post series, and visual grid strategies tailored for brand engagement.",
+            tags: ["SOCIAL CONTENT", "CAROUSEL POSTS", "GRID LAYOUTS", "DIGITAL MARKETING"]
         },
         posters: {
+            title: "Posters",
             category: "GRAPHIC DESIGN",
-            title: "Posters Collection",
-            role: "Swiss Typographic & Print Art",
-            tools: "Photoshop, Illustrator",
-            overview: "Experimental poster designs inspired by modern Swiss typography, architectural forms, and cultural exhibition concepts. Focuses on strong editorial contrast, negative space, and typographic hierarchy.",
-            tags: ["Swiss Typography", "Poster Art", "Print Design", "Editorial Layout"],
-            image: "assets/images/posters.jpg"
+            role: "Poster Design & Art",
+            tools: "Photoshop & Illustrator",
+            image: "assets/images/posters.jpg",
+            overview: "Experimental Swiss-style typographic poster designs, cultural exhibition prints, and bold geometric compositions.",
+            tags: ["SWISS TYPOGRAPHY", "PRINT DESIGN", "ART DIRECTION", "COMPOSITION"]
         },
         uiux: {
-            category: "UI/UX DESIGN",
             title: "UI/UX Concepts",
-            role: "Mobile App & Web Interface Design",
-            tools: "Figma",
-            overview: "Apple-inspired mobile application interfaces, glassmorphic web dashboards, and interactive user experience prototypes crafted in Figma. Built with clean layout grids, modern UI components, and micro-interaction states.",
-            tags: ["Mobile App UI", "Figma", "Glassmorphism", "Design Systems", "Prototyping"],
-            image: "assets/images/uiux_concepts.jpg"
+            category: "UI/UX DESIGN",
+            role: "UI/UX & Mobile App",
+            tools: "Figma & Prototyping",
+            image: "assets/images/uiux_concepts.jpg",
+            overview: "Apple-inspired mobile application interfaces, glassmorphic dashboards, wireframes, and scalable design system components.",
+            tags: ["MOBILE APP", "WEB UI", "FIGMA SYSTEM", "INTERACTION DESIGN"]
         },
         photo_manip: {
-            category: "GRAPHIC DESIGN",
             title: "Photo Manipulation",
-            role: "Photoshop Surreal Digital Art",
+            category: "GRAPHIC DESIGN",
+            role: "Digital Compositing",
             tools: "Adobe Photoshop",
-            overview: "Creative Photoshop photo manipulation artwork, surreal digital compositions, atmospheric lighting blends, and high-end image retouching showcasing advanced raster graphics techniques.",
-            tags: ["Photoshop Art", "Photo Compositing", "Surrealism", "Digital Retouching"],
-            image: "assets/images/photo_manipulation.jpg"
+            image: "assets/images/photo_manipulation.jpg",
+            overview: "Creative Photoshop compositions, surreal digital art, atmospheric lighting blends, and photo retouching benchmark showcases.",
+            tags: ["PHOTOSHOP ART", "SURREALISM", "DIGITAL COMPOSITING", "COLOR GRADING"]
         }
     };
 
-    const projectModal = document.getElementById('project-modal');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
-    const modalCategory = document.getElementById('modal-category');
-    const modalTitle = document.getElementById('modal-title');
-    const modalRole = document.getElementById('modal-role');
-    const modalTools = document.getElementById('modal-tools');
-    const modalImage = document.getElementById('modal-image');
-    const modalOverview = document.getElementById('modal-overview');
-    const modalTechStack = document.getElementById('modal-tech-stack');
+    const projectModal = document.getElementById("project-modal");
+    const modalCloseBtn = document.getElementById("modal-close-btn");
+    const modalCategory = document.getElementById("modal-category");
+    const modalTitle = document.getElementById("modal-title");
+    const modalRole = document.getElementById("modal-role");
+    const modalTools = document.getElementById("modal-tools");
+    const modalImage = document.getElementById("modal-image");
+    const modalOverview = document.getElementById("modal-overview");
+    const modalTechStack = document.getElementById("modal-tech-stack");
 
-    const projectTriggers = document.querySelectorAll('.project-card-trigger');
+    const projectTriggers = document.querySelectorAll(".project-card-trigger");
 
-    projectTriggers.forEach(card => {
-        card.addEventListener('click', () => {
-            const key = card.getAttribute('data-project');
-            const data = projectData[key];
+    function openProjectModal(projectId) {
+        const data = projectsData[projectId];
+        if (!data || !projectModal) return;
 
-            if (data) {
-                if (modalCategory) modalCategory.textContent = data.category;
-                if (modalTitle) modalTitle.textContent = data.title;
-                if (modalRole) modalRole.textContent = data.role;
-                if (modalTools) modalTools.textContent = data.tools;
-                if (modalImage) modalImage.src = data.image;
-                if (modalOverview) modalOverview.textContent = data.overview;
+        if (modalCategory) modalCategory.textContent = data.category;
+        if (modalTitle) modalTitle.textContent = data.title;
+        if (modalRole) modalRole.textContent = data.role;
+        if (modalTools) modalTools.textContent = data.tools;
+        if (modalImage) {
+            modalImage.src = data.image;
+            modalImage.alt = data.title;
+        }
+        if (modalOverview) modalOverview.textContent = data.overview;
 
-                if (modalTechStack) {
-                    modalTechStack.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join('');
-                }
+        if (modalTechStack) {
+            modalTechStack.innerHTML = "";
+            data.tags.forEach((tag) => {
+                const span = document.createElement("span");
+                span.textContent = tag;
+                modalTechStack.appendChild(span);
+            });
+        }
 
-                if (projectModal) {
-                    projectModal.classList.add('active');
-                    projectModal.setAttribute('aria-hidden', 'false');
-                    if (lenis) lenis.stop();
-                }
-            }
+        projectModal.classList.add("active");
+        projectModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeProjectModal() {
+        if (!projectModal) return;
+        projectModal.classList.remove("active");
+        projectModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    projectTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const projectId = trigger.getAttribute("data-project");
+            openProjectModal(projectId);
         });
     });
 
     if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', () => {
-            if (projectModal) {
-                projectModal.classList.remove('active');
-                projectModal.setAttribute('aria-hidden', 'true');
-                if (lenis) lenis.start();
-            }
-        });
+        modalCloseBtn.addEventListener("click", closeProjectModal);
     }
 
     if (projectModal) {
-        projectModal.addEventListener('click', (e) => {
+        projectModal.addEventListener("click", (e) => {
             if (e.target === projectModal) {
-                projectModal.classList.remove('active');
-                projectModal.setAttribute('aria-hidden', 'true');
-                if (lenis) lenis.start();
+                closeProjectModal();
             }
         });
     }
 
-    // ----------------------------------------------------------------------
-    // 8. Resume Modal Controller & PDF Download
-    // ----------------------------------------------------------------------
-    const resumeModal = document.getElementById('resume-modal');
-    const openResumeBtn = document.getElementById('open-resume-btn');
-    const heroResumeBtn = document.getElementById('hero-resume-btn');
-    const resumeCloseBtn = document.getElementById('resume-close-btn');
-    const downloadCvBtn = document.getElementById('download-cv-file-btn');
+    // --------------------------------------------------
+    // 8. RESUME MODAL
+    // --------------------------------------------------
+    const resumeModal = document.getElementById("resume-modal");
+    const openResumeBtn = document.getElementById("open-resume-btn");
+    const heroResumeBtn = document.getElementById("hero-resume-btn");
+    const resumeCloseBtn = document.getElementById("resume-close-btn");
+    const downloadCvBtn = document.getElementById("download-cv-file-btn");
 
-    function openResume() {
-        if (resumeModal) {
-            resumeModal.classList.add('active');
-            resumeModal.setAttribute('aria-hidden', 'false');
-            if (lenis) lenis.stop();
-        }
+    function openResumeModal() {
+        if (!resumeModal) return;
+        resumeModal.classList.add("active");
+        resumeModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
     }
 
-    function closeResume() {
-        if (resumeModal) {
-            resumeModal.classList.remove('active');
-            resumeModal.setAttribute('aria-hidden', 'true');
-            if (lenis) lenis.start();
-        }
+    function closeResumeModal() {
+        if (!resumeModal) return;
+        resumeModal.classList.remove("active");
+        resumeModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
     }
 
-    if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
-    if (heroResumeBtn) heroResumeBtn.addEventListener('click', openResume);
-    if (resumeCloseBtn) resumeCloseBtn.addEventListener('click', closeResume);
+    if (openResumeBtn) openResumeBtn.addEventListener("click", openResumeModal);
+    if (heroResumeBtn) heroResumeBtn.addEventListener("click", openResumeModal);
+    if (resumeCloseBtn) resumeCloseBtn.addEventListener("click", closeResumeModal);
 
     if (resumeModal) {
-        resumeModal.addEventListener('click', (e) => {
-            if (e.target === resumeModal) closeResume();
+        resumeModal.addEventListener("click", (e) => {
+            if (e.target === resumeModal) {
+                closeResumeModal();
+            }
         });
     }
 
-    // Resume Download Handler (Generates clean formatted text CV file)
     if (downloadCvBtn) {
-        downloadCvBtn.addEventListener('click', () => {
-            const resumeContent = `
-====================================================================
-MUHAMMED ANWAR — GRAPHIC DESIGNER & UI/UX DESIGNER
-Contact: muhammed.anwar.design@gmail.com
-LinkedIn: linkedin.com/in/muhammedanwar | Behance: behance.net/muhammedanwar
-====================================================================
-
-PROFILE SUMMARY
-Dedicated, self-taught Graphic Designer and UI/UX Designer passionate about 
-crafting minimalist brand identities, modern logo collections, and intuitive 
-digital interfaces. Proficient in Figma, Adobe Creative Cloud (Photoshop, 
-Illustrator, Canva), and front-end web technologies (HTML, CSS, JavaScript).
-
-SOFTWARE & CORE SKILLS
-- Design Stack: Photoshop, Illustrator, Figma, Canva
-- UI/UX Engineering: Wireframing, Prototyping, Design Systems, Mobile App UI
-- Frontend Web: HTML5, CSS3, JavaScript, GSAP Scroll Animations
-- Branding: Logo Design, Brand Guidelines, Packaging, Visual Storytelling
-
-EXPERIENCE
-Freelance Graphic Designer & UI/UX Specialist (2024 — Present)
-- Designed brand identity packages, logo marks, and visual guidelines.
-- Created user interface concepts in Figma with emphasis on glassmorphism.
-- Produced social media carousels, Swiss typographic posters, and campaign artwork.
-- Developed clean portfolio layouts using HTML, CSS, and JavaScript.
-
-SELECTED PROJECTS
-1. Tea Café Branding — Brand Identity & Packaging Design
-2. Logo Collection — Minimalist Vector Logomarks & Symbols
-3. Social Media Designs — Digital Campaign Carousel Series
-4. Posters — Swiss Typographic & Exhibition Print Art
-5. UI/UX Concepts — Mobile App UI & Figma Design Systems
-6. Photo Manipulation — Photoshop Compositing & Digital Art
-====================================================================
-`;
-            const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'Muhammed_Anwar_Resume.txt';
-            link.click();
-
-            showToast("Resume downloaded successfully!");
+        downloadCvBtn.addEventListener("click", () => {
+            showToast("Resume download started!", "fa-solid fa-file-arrow-down");
         });
     }
 
-    // ----------------------------------------------------------------------
-    // 9. Email Copy & Form Handler with Toast Notifications
-    // ----------------------------------------------------------------------
-    const copyEmailBtn = document.getElementById('copy-email-btn');
-    const emailAddress = document.getElementById('email-address');
-    const copyPillText = document.getElementById('copy-pill-text');
+    // Close Modals on Escape Key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeProjectModal();
+            closeResumeModal();
+        }
+    });
 
-    if (copyEmailBtn && emailAddress) {
-        copyEmailBtn.addEventListener('click', () => {
-            const textToCopy = emailAddress.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
+    // --------------------------------------------------
+    // 9. ONE-CLICK EMAIL COPY
+    // --------------------------------------------------
+    const copyEmailBtn = document.getElementById("copy-email-btn");
+    const emailAddressText = document.getElementById("email-address");
+    const copyPillText = document.getElementById("copy-pill-text");
+
+    if (copyEmailBtn && emailAddressText) {
+        copyEmailBtn.addEventListener("click", () => {
+            const email = emailAddressText.textContent.trim();
+            navigator.clipboard.writeText(email).then(() => {
                 if (copyPillText) copyPillText.textContent = "COPIED!";
-                showToast("Email address copied to clipboard!");
+                showToast("Email copied to clipboard!", "fa-solid fa-copy");
 
                 setTimeout(() => {
                     if (copyPillText) copyPillText.textContent = "COPY EMAIL";
-                }, 2500);
-            }).catch(err => {
-                showToast("Failed to copy email.");
+                }, 2000);
+            }).catch(() => {
+                showToast("Could not copy email.", "fa-solid fa-triangle-exclamation");
             });
         });
     }
 
-    const contactForm = document.getElementById('contact-form');
+    // --------------------------------------------------
+    // 10. CONTACT FORM SUBMISSION
+    // --------------------------------------------------
+    const contactForm = document.getElementById("contact-form");
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            showToast("Message sent! Muhammed will get back to you soon.");
+            const nameInput = document.getElementById("form-name");
+            const name = nameInput ? nameInput.value.trim() : "there";
+
+            showToast(`Thank you, ${name}! Your message has been sent successfully.`, "fa-solid fa-paper-plane");
             contactForm.reset();
         });
     }
 
-    // Toast Notification System
-    function showToast(message) {
-        const container = document.getElementById('toast-container');
+    // --------------------------------------------------
+    // 11. TOAST NOTIFICATIONS
+    // --------------------------------------------------
+    function showToast(message, iconClass = "fa-solid fa-circle-check") {
+        const container = document.getElementById("toast-container");
         if (!container) return;
 
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = `<i class="fa-solid fa-circle-check toast-icon"></i> <span>${message}</span>`;
+        const toast = document.createElement("div");
+        toast.className = "toast";
+
+        toast.innerHTML = `
+            <i class="${iconClass} toast-icon"></i>
+            <span>${message}</span>
+        `;
+
         container.appendChild(toast);
 
-        setTimeout(() => toast.classList.add('show'), 10);
+        setTimeout(() => {
+            toast.classList.add("show");
+        }, 10);
 
         setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
+            toast.classList.remove("show");
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
         }, 3500);
     }
 
-    // Escape Key Close for Modals
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (projectModal && projectModal.classList.contains('active')) {
-                projectModal.classList.remove('active');
-                if (lenis) lenis.start();
+    // --------------------------------------------------
+    // 12. NAVBAR ACTIVE LINK & SCROLL BEHAVIOR
+    // --------------------------------------------------
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let currentSection = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute("id");
             }
-            if (resumeModal && resumeModal.classList.contains('active')) {
-                resumeModal.classList.remove('active');
-                if (lenis) lenis.start();
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSection}`) {
+                link.classList.add("active");
             }
-        }
+        });
     });
 
-});
-window.addEventListener("load", () => {
-    ScrollTrigger.refresh();
+    // --------------------------------------------------
+    // 13. SMOOTH ANCHOR SCROLL
+    // --------------------------------------------------
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 90;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
 });
