@@ -547,7 +547,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     top: offsetPosition,
                     behavior: "smooth"
                 });
+
+                // Auto close mobile menu on click
+                if (navMenu && navMenu.classList.contains("mobile-active")) {
+                    navMenu.classList.remove("mobile-active");
+                    if (mobileToggle) {
+                        mobileToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }
+                }
             }
         });
     });
+
+    // --------------------------------------------------
+    // 14. MOBILE MENU TOGGLE
+    // --------------------------------------------------
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener("click", () => {
+            const isOpen = navMenu.classList.toggle("mobile-active");
+            mobileToggle.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+    }
 });
