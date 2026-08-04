@@ -4,7 +4,7 @@
    GSAP + ScrollTrigger + Lenis + Modals + Physics
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
 
     // ----------------------------------------------------------------------
     // 1. GSAP & Lenis Smooth Scroll Setup
@@ -479,4 +479,7 @@ SELECTED PROJECTS
         }
     });
 
+});
+window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
 });
