@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------
-    // 8. RESUME MODAL
+    // 8. RESUME MODAL & PDF DOWNLOAD
     // --------------------------------------------------
     const resumeModal = document.getElementById("resume-modal");
     const openResumeBtn = document.getElementById("open-resume-btn");
@@ -411,6 +411,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (openResumeBtn) openResumeBtn.addEventListener("click", openResumeModal);
     if (heroResumeBtn) heroResumeBtn.addEventListener("click", openResumeModal);
+
+    document.querySelectorAll("#hero-resume-btn, #open-resume-btn, .btn-hero-secondary").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openResumeModal();
+        });
+    });
+
     if (resumeCloseBtn) resumeCloseBtn.addEventListener("click", closeResumeModal);
 
     if (resumeModal) {
@@ -423,10 +431,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (downloadCvBtn) {
         downloadCvBtn.addEventListener("click", () => {
-            showToast("Generating PDF download...", "fa-solid fa-file-arrow-down");
-            setTimeout(() => {
+            showToast("Downloading Resume PDF...", "fa-solid fa-file-arrow-down");
+
+            const resumePaper = document.querySelector(".resume-paper");
+            if (resumePaper && typeof html2pdf !== "undefined") {
+                const opt = {
+                    margin:       [0.3, 0.4, 0.3, 0.4],
+                    filename:     'Muhammed_Anwar_Resume.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2, useCORS: true },
+                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(resumePaper).save();
+            } else {
                 window.print();
-            }, 300);
+            }
         });
     }
 
