@@ -423,7 +423,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (downloadCvBtn) {
         downloadCvBtn.addEventListener("click", () => {
-            showToast("Resume download started!", "fa-solid fa-file-arrow-down");
+            showToast("Generating PDF download...", "fa-solid fa-file-arrow-down");
+            setTimeout(() => {
+                window.print();
+            }, 300);
         });
     }
 

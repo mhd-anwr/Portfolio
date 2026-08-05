@@ -2051,3 +2051,63 @@ img {
     visibility: visible;
     transform: none;
 }
+
+/* ===================================================
+   Print / Save to PDF Stylesheet
+=================================================== */
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+
+    #resume-modal,
+    #resume-modal * {
+        visibility: visible !important;
+    }
+
+    #resume-modal {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+    }
+
+    .resume-modal-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #FFFFFF !important;
+    }
+
+    .resume-paper {
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    .resume-name,
+    .resume-sec-title,
+    .job-role {
+        color: #000000 !important;
+    }
+
+    .modal-close-btn,
+    .resume-actions,
+    .toast-container,
+    .navbar,
+    .mobile-toggle,
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+}
