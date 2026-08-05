@@ -431,20 +431,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (downloadCvBtn) {
         downloadCvBtn.addEventListener("click", () => {
-            showToast("Downloading Resume PDF...", "fa-solid fa-file-arrow-down");
-
             const resumePaper = document.querySelector(".resume-paper");
-            if (resumePaper && typeof html2pdf !== "undefined") {
-                const opt = {
-                    margin:       [0.3, 0.4, 0.3, 0.4],
-                    filename:     'Muhammed_Anwar_Resume.pdf',
-                    image:        { type: 'jpeg', quality: 0.98 },
-                    html2canvas:  { scale: 2, useCORS: true },
-                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-                html2pdf().set(opt).from(resumePaper).save();
+            if (!resumePaper) return;
+
+            showToast("Generating PDF download...", "fa-solid fa-file-arrow-down");
+
+            const actions = resumePaper.querySelector(".resume-actions");
+            if (actions) actions.style.display = "none";
+
+            if (window.html2canvas && window.jspdf) {
+                const { jsPDF } = window.jspdf;
+
+                html2canvas(resumePaper, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: "#FFFFFF"
+                }).then((canvas) => {
+                    if (actions) actions.style.display = "";
+
+                    const imgData = canvas.toDataURL("image/jpeg", 0.98);
+                    const pdf = new jsPDF("p", "mm", "a4");
+                    const imgWidth = 210;
+                    const pageHeight = 297;
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                    pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+                    pdf.save("Muhammed_Anwar_Resume.pdf");
+
+                    showToast("PDF downloaded successfully!", "fa-solid fa-check");
+                }).catch((err) => {
+                    console.error("PDF export error:", err);
+                    if (actions) actions.style.display = "";
+                });
             } else {
-                window.print();
+                showToast("Preparing PDF download...", "fa-solid fa-file-arrow-down");
             }
         });
     }

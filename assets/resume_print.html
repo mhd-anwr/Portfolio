@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muhammed Anwar — Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Sora', sans-serif;
+            color: #090A0C;
+            background: #FFFFFF;
+            padding: 2.5rem 3rem;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #F0F1F5;
+            margin-bottom: 1.8rem;
+        }
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #D4FF00;
+        }
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #090A0C;
+        }
+        .title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #525866;
+            margin-top: 0.2rem;
+        }
+        .contact-info p {
+            font-size: 0.85rem;
+            color: #525866;
+            margin-bottom: 0.3rem;
+            text-align: right;
+        }
+        .section {
+            margin-bottom: 1.8rem;
+        }
+        .sec-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #868C98;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+        .summary-text {
+            font-size: 0.95rem;
+            color: #333742;
+            line-height: 1.65;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            font-size: 0.9rem;
+            color: #333742;
+        }
+        .skills-grid span strong {
+            color: #090A0C;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #090A0C;
+            margin-bottom: 0.4rem;
+        }
+        .job-date {
+            font-size: 0.85rem;
+            color: #868C98;
+            font-weight: 500;
+        }
+        .job-bullets {
+            margin-left: 1.4rem;
+            font-size: 0.92rem;
+            color: #333742;
+            line-height: 1.65;
+        }
+        .job-bullets li {
+            margin-bottom: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="profile-left">
+            <img src="../assets/images/anwar_cv_profile.jpg" alt="Muhammed Anwar" class="avatar">
+            <div>
+                <h1 class="name">MUHAMMED ANWAR</h1>
+                <p class="title">Graphic Designer & UI/UX Specialist</p>
+            </div>
+        </div>
+        <div class="contact-info">
+            <p><strong>Email:</strong> mhd.anwrofcl@gmail.com</p>
+            <p><strong>LinkedIn:</strong> linkedin.com/in/anwar-undefined-1aa183340</p>
+            <p><strong>Behance:</strong> behance.net/mhd_awr</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="sec-title">PROFILE SUMMARY</h2>
+        <p class="summary-text">
+            Dedicated, self-taught Graphic Designer and UI/UX Specialist passionate about crafting minimalist brand identities, modern logo collections, and intuitive digital interfaces. Proficient in Figma, Adobe Creative Cloud (Photoshop, Illustrator, Canva), and front-end web technologies (HTML, CSS, JavaScript).
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="sec-title">CORE SKILLS & SOFTWARE</h2>
+        <div class="skills-grid">
+            <span><strong>Design Stack:</strong> Photoshop, Illustrator, Figma, Canva</span>
+            <span><strong>UI/UX:</strong> Wireframing, Prototyping, Design Systems, Mobile App UI</span>
+            <span><strong>Frontend:</strong> HTML5, CSS3, JavaScript, GSAP Animations</span>
+            <span><strong>Branding:</strong> Logo Design, Brand Guidelines, Visual Storytelling</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="sec-title">EXPERIENCE</h2>
+        <div class="job-header">
+            <span>Freelance Graphic Designer & UI/UX Specialist</span>
+            <span class="job-date">2024 — Present</span>
+        </div>
+        <ul class="job-bullets">
+            <li>Designed brand identity packages, logo marks, and visual guidelines for independent client projects.</li>
+            <li>Created user interface concepts in Figma with emphasis on glassmorphism and clean editorial layout.</li>
+            <li>Produced social media carousels, Swiss typographic posters, and digital campaign artwork.</li>
+        </ul>
+    </div>
+</body>
+</html>
