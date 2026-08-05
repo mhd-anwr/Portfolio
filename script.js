@@ -466,13 +466,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (contactForm) {
 
         contactForm.addEventListener("submit", function (e) {
-
             e.preventDefault();
 
-            const submitBtn = contactForm.querySelector("button[type='submit']");
+            console.log("FORM SUBMITTED");   // <-- Add this line here
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
 
             submitBtn.disabled = true;
-
             submitBtn.innerHTML = "Sending...";
 
             emailjs.send(
