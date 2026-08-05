@@ -437,36 +437,54 @@ document.addEventListener("DOMContentLoaded", () => {
             showToast("Generating PDF download...", "fa-solid fa-file-arrow-down");
 
             const actions = resumePaper.querySelector(".resume-actions");
-            if (actions) actions.style.display = "none";
-
-            if (window.html2canvas && window.jspdf) {
-                const { jsPDF } = window.jspdf;
-
-                html2canvas(resumePaper, {
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: "#FFFFFF"
-                }).then((canvas) => {
-                    if (actions) actions.style.display = "";
-
-                    const imgData = canvas.toDataURL("image/jpeg", 0.98);
-                    const pdf = new jsPDF("p", "mm", "a4");
-                    const imgWidth = 210;
-                    const pageHeight = 297;
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-                    pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-                    pdf.save("Muhammed_Anwar_Resume.pdf");
-
-                    showToast("PDF downloaded successfully!", "fa-solid fa-check");
-                }).catch((err) => {
-                    console.error("PDF export error:", err);
-                    if (actions) actions.style.display = "";
-                });
-            } else {
-                showToast("Preparing PDF download...", "fa-solid fa-file-arrow-down");
+            if (actions) {
+                actions.style.display = "none";
+                actions.style.visibility = "hidden";
             }
+
+            setTimeout(() => {
+                if (window.html2canvas && window.jspdf) {
+                    const { jsPDF } = window.jspdf;
+
+                    html2canvas(resumePaper, {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: "#FFFFFF",
+                        ignoreElements: (element) =>
+                            element.classList.contains("resume-actions") ||
+                            element.classList.contains("btn-download-pdf")
+                    }).then((canvas) => {
+                        if (actions) {
+                            actions.style.display = "";
+                            actions.style.visibility = "";
+                        }
+
+                        const imgData = canvas.toDataURL("image/jpeg", 0.98);
+                        const pdf = new jsPDF("p", "mm", "a4");
+                        const imgWidth = 210;
+                        const pageHeight = 297;
+                        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                        pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+                        pdf.save("Muhammed_Anwar_Resume.pdf");
+
+                        showToast("PDF downloaded successfully!", "fa-solid fa-check");
+                    }).catch((err) => {
+                        console.error("PDF export error:", err);
+                        if (actions) {
+                            actions.style.display = "";
+                            actions.style.visibility = "";
+                        }
+                    });
+                } else {
+                    if (actions) {
+                        actions.style.display = "";
+                        actions.style.visibility = "";
+                    }
+                    showToast("Preparing PDF download...", "fa-solid fa-file-arrow-down");
+                }
+            }, 100);
         });
     }
 
