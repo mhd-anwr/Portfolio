@@ -461,12 +461,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
 
                         const imgData = canvas.toDataURL("image/jpeg", 0.98);
-                        const pdf = new jsPDF("p", "mm", "a4");
-                        const imgWidth = 210;
-                        const pageHeight = 297;
-                        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                        const pdf = new jsPDF({
+                            orientation: "portrait",
+                            unit: "mm",
+                            format: "a4"
+                        });
 
-                        pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+                        const pdfWidth = 210;
+                        const pdfHeight = 297;
+                        const margin = 10;
+                        const printWidth = pdfWidth - (margin * 2);
+                        const printHeight = (canvas.height * printWidth) / canvas.width;
+
+                        pdf.addImage(imgData, "JPEG", margin, margin, printWidth, printHeight);
                         pdf.save("Muhammed_Anwar_Resume.pdf");
 
                         showToast("PDF downloaded successfully!", "fa-solid fa-check");

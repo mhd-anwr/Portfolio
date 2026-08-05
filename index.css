@@ -1596,8 +1596,13 @@ img {
 }
 
 .resume-paper {
-    padding: 3.5rem;
-    overflow-y: auto;
+    background: #FFFFFF;
+    color: #090A0C;
+    padding: 3rem 3.2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .resume-header {
@@ -1605,8 +1610,9 @@ img {
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(9, 10, 12, 0.12);
+    margin-bottom: 1.8rem;
 }
 
 .resume-profile-row {
@@ -1616,46 +1622,57 @@ img {
 }
 
 .resume-avatar {
-    width: 72px;
-    height: 72px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--accent-lime);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border: 2px solid #090A0C;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
 }
 
 .resume-name {
-    font-size: 2rem;
+    font-size: 1.85rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    color: #090A0C;
+    line-height: 1.1;
 }
 
 .resume-title {
-    font-size: 1rem;
-    color: var(--accent-lime-dark);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
     font-weight: 600;
+    margin-top: 0.2rem;
 }
 
 .resume-contact-info p {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.3rem;
+    font-size: 0.84rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resume-contact-info p i {
+    color: #090A0C;
+    font-size: 0.9rem;
+    width: 14px;
 }
 
 .resume-divider {
-    border: none;
-    height: 1px;
-    background: var(--border-light);
-    margin: 1.5rem 0;
+    display: none;
 }
 
 .resume-sec-title {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: 0.8rem;
+    letter-spacing: 0.12em;
+    color: #868C98;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
 }
 
 .resume-section {
@@ -1663,30 +1680,37 @@ img {
 }
 
 .resume-text {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    font-size: 0.94rem;
+    color: #2D3139;
     line-height: 1.65;
 }
 
 .resume-skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
+    gap: 0.85rem;
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: #2D3139;
+}
+
+.resume-skills-grid span strong {
+    color: #090A0C;
 }
 
 .job-header {
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
+    align-items: center;
+    font-size: 0.98rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
+    color: #090A0C;
+    margin-bottom: 0.5rem;
 }
 
 .job-date {
     font-size: 0.82rem;
-    color: var(--accent-lime-dark);
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 .job-bullets {
