@@ -1,7 +1,7 @@
 /* ==========================================================================
    MUHAMMED ANWAR — GRAPHIC DESIGNER & UI/UX DESIGNER
    Awwwards Site of the Day Design System
-   Typography: Space Grotesk + Instrument Serif
+   Typography: Sora + Instrument Serif
    ========================================================================== */
 
 :root {
@@ -26,7 +26,7 @@
     --accent-lime-subtle: rgba(212, 255, 0, 0.12);
 
     /* Typography Stack */
-    --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
 
     /* Layout & Physics */
