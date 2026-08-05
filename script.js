@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
             category: "BRAND IDENTITY",
             role: "Brand Identity & Packaging",
             tools: "Illustrator & Photoshop",
-            image: "assets/images/tea_cafe.jpg",
+            image: "assets/images/tea_cafe.png",
             overview: "Comprehensive brand identity system, organic tea packaging design, ceramic tableware motifs, and store collateral for an artisanal tea lounge.",
             tags: ["BRAND IDENTITY", "PACKAGING", "VISUAL SYSTEM", "CREATIVE DIRECTION"]
         },
