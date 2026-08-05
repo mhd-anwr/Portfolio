@@ -475,14 +475,24 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.disabled = true;
             submitBtn.innerHTML = "Sending...";
 
+            const formName = document.getElementById("form-name") ? document.getElementById("form-name").value : "";
+            const formEmail = document.getElementById("form-email") ? document.getElementById("form-email").value : "";
+            const formMessage = document.getElementById("form-message") ? document.getElementById("form-message").value : "";
+
+            const templateParams = {
+                name: formName,
+                from_name: formName,
+                email: formEmail,
+                from_email: formEmail,
+                reply_to: formEmail,
+                message: formMessage
+            };
+
             emailjs.send(
                 "service_im0v3lj",
                 "template_zc98mcn",
-                {
-                    name: document.getElementById("form-name").value,
-                    email: document.getElementById("form-email").value,
-                    message: document.getElementById("form-message").value,
-                }
+                templateParams,
+                "gz2f1kp7L-ae3kKgV"
             )
 
                 .then(() => {
