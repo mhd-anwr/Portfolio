@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 emailjs.init("gz2f1kp7L-ae3kKgV");
 document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------
-    // 1. PRELOADER ANIMATION
+    // 1. PRELOADER COUNTER & CURTAIN SLIDE REVEAL
     // --------------------------------------------------
     const preloader = document.getElementById("preloader");
     const loaderProgress = document.getElementById("loader-progress");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let progress = 0;
     const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 15) + 10;
+        progress += Math.floor(Math.random() * 12) + 5;
         if (progress >= 100) {
             progress = 100;
             clearInterval(interval);
@@ -23,27 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
             if (loaderPercent) loaderPercent.textContent = "100";
 
             setTimeout(() => {
-                // Trigger 0% to 100% opacity hero animation
                 initHeroAnimations();
 
                 if (preloader) {
                     preloader.style.pointerEvents = "none";
                     gsap.to(preloader, {
-                        opacity: 0,
-                        duration: 0.4,
-                        ease: "power2.out",
+                        yPercent: -100,
+                        duration: 0.85,
+                        ease: "power4.inOut",
                         onComplete: () => {
                             preloader.style.display = "none";
                             ScrollTrigger.refresh();
                         }
                     });
                 }
-            }, 100);
+            }, 300);
         } else {
             if (loaderProgress) loaderProgress.style.width = `${progress}%`;
             if (loaderPercent) loaderPercent.textContent = `${progress}`;
         }
-    }, 25);
+    }, 30);
 
     // --------------------------------------------------
     // 2. DUAL-RING CUSTOM CURSOR & BG PARALLAX
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursorText = document.getElementById("cursor-text");
 
     // --------------------------------------------------
-    // 2.5. INTERACTIVE BACKGROUND PARTICLE CANVAS
+    // 2.5. INTERACTIVE LIQUID WATER WAVE CANVAS
     // --------------------------------------------------
     const bgCanvas = document.getElementById("bg-canvas");
     if (bgCanvas) {
@@ -66,62 +65,51 @@ document.addEventListener("DOMContentLoaded", () => {
             height = bgCanvas.height = window.innerHeight;
         });
 
-        const particles = [];
-        const particleCount = Math.min(Math.floor(window.innerWidth / 35), 45);
+        let step = 0;
+        let mouseX = width / 2;
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.45,
-                vy: (Math.random() - 0.5) * 0.45,
-                radius: Math.random() * 2 + 1.2,
-                alpha: Math.random() * 0.5 + 0.3
-            });
-        }
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+        });
 
-        function animateBgParticles() {
+        const waveColors = [
+            "rgba(139, 92, 246, 0.18)", // Vivid Neon Violet
+            "rgba(124, 58, 237, 0.12)", // Deep Indigo
+            "rgba(167, 139, 250, 0.08)", // Soft Purple
+            "rgba(6, 182, 212, 0.06)"   // Electric Cyan Ripple
+        ];
+
+        function animateWaterWaves() {
             ctx.clearRect(0, 0, width, height);
-            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-            const particleColor = isDark ? "212, 255, 0" : "9, 10, 12";
-            const alphaMult = isDark ? 0.45 : 0.75;
-            const lineAlphaMult = isDark ? 0.15 : 0.28;
+            step += 0.015;
 
-            particles.forEach((p, index) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0) p.x = width;
-                if (p.x > width) p.x = 0;
-                if (p.y < 0) p.y = height;
-                if (p.y > height) p.y = 0;
-
+            for (let i = 0; i < 4; i++) {
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius * (isDark ? 1 : 1.3), 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${particleColor}, ${p.alpha * alphaMult})`;
-                ctx.fill();
+                ctx.moveTo(0, height);
 
-                for (let j = index + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+                const waveHeight = 35 + i * 18;
+                const wavelength = 0.0038 - i * 0.0007;
+                const speed = step * (1 + i * 0.25);
+                const baseLine = height * 0.55 + i * 38;
 
-                    if (dist < 130) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(${particleColor}, ${lineAlphaMult * (1 - dist / 130)})`;
-                        ctx.lineWidth = isDark ? 0.8 : 1.2;
-                        ctx.stroke();
-                    }
+                for (let x = 0; x <= width; x += 10) {
+                    const mouseDist = Math.abs(x - mouseX);
+                    const mouseFactor = mouseDist < 260 ? (1 - mouseDist / 260) * 35 * Math.sin(step * 4) : 0;
+
+                    const y = baseLine + Math.sin(x * wavelength + speed) * waveHeight + Math.cos(x * 0.0018 + speed) * 15 + mouseFactor;
+                    ctx.lineTo(x, y);
                 }
-            });
 
-            requestAnimationFrame(animateBgParticles);
+                ctx.lineTo(width, height);
+                ctx.closePath();
+                ctx.fillStyle = waveColors[i];
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animateWaterWaves);
         }
 
-        animateBgParticles();
+        animateWaterWaves();
     }
 
     if (cursorDot && cursorRing) {
