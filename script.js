@@ -294,6 +294,22 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // --------------------------------------------------
+        // 5. MOUSE PARALLAX (HERO CONTENT MOVEMENT)
+        // --------------------------------------------------
+        if (document.querySelector(".hero-content")) {
+            window.addEventListener("mousemove", (e) => {
+                let x = (e.clientX / window.innerWidth - 0.5) * 25;
+                let y = (e.clientY / window.innerHeight - 0.5) * 25;
+
+                gsap.to(".hero-content", {
+                    x: x,
+                    y: y,
+                    duration: 1.4
+                });
+            });
+        }
+
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;
