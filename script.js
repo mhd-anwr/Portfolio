@@ -710,4 +710,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 : '<i class="fa-solid fa-bars"></i>';
         });
     }
+
+    // --------------------------------------------------
+    // 15. DARK MODE & LIGHT MODE THEME SWITCHER
+    // --------------------------------------------------
+    const themeToggle = document.getElementById("theme-toggle");
+    const storedTheme = localStorage.getItem("portfolio-theme");
+
+    if (storedTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            if (newTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                localStorage.setItem("portfolio-theme", "dark");
+                showToast("Switched to Dark Mode", "fa-solid fa-moon");
+            } else {
+                document.documentElement.removeAttribute("data-theme");
+                themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                localStorage.setItem("portfolio-theme", "light");
+                showToast("Switched to Light Mode", "fa-solid fa-sun");
+            }
+        });
+    }
 });
