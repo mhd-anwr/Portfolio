@@ -295,6 +295,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // --------------------------------------------------
+        // 8. SCROLL SCALING (HEADING 100% -> 92%)
+        // --------------------------------------------------
+        if (document.querySelector(".hero-title")) {
+            gsap.to(".hero-title", {
+                scale: 0.92,
+                scrollTrigger: {
+                    trigger: "#hero",
+                    scrub: true,
+                    start: "top top",
+                    end: "bottom top"
+                }
+            });
+        }
+
+        // --------------------------------------------------
         // 5. MOUSE PARALLAX (HERO CONTENT MOVEMENT)
         // --------------------------------------------------
         if (document.querySelector(".hero-content")) {
