@@ -5,25 +5,25 @@
    ========================================================================== */
 
 :root {
-    /* Exact Color Combo from https://www.arrowsdesign.me/ (Dark Obsidian & Electric Lime) */
-    --bg-main: #060709;
-    --bg-subtle: #0E1015;
-    --bg-card: #12151D;
-    --bg-card-hover: #181C26;
+    /* PROFESSIONAL WHITE & ROYAL COBALT BLUE COLOR PALETTE */
+    --bg-main: #F8FAFC;
+    --bg-subtle: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
 
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-hover: #D4FF00;
-    --border-lime: #D4FF00;
+    --border-light: rgba(37, 99, 235, 0.12);
+    --border-hover: #2563EB;
+    --border-lime: #2563EB;
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
     --text-muted: #64748B;
 
-    /* Electric Neon Lime Accent */
-    --accent-lime: #D4FF00;
-    --accent-lime-dark: #A3E635;
-    --accent-lime-glow: rgba(212, 255, 0, 0.35);
-    --accent-lime-subtle: rgba(212, 255, 0, 0.12);
+    /* Professional Royal Cobalt Blue Accents */
+    --accent-lime: #2563EB;
+    --accent-lime-dark: #1D4ED8;
+    --accent-lime-glow: rgba(37, 99, 235, 0.25);
+    --accent-lime-subtle: rgba(37, 99, 235, 0.08);
 
     /* Typography Stack — Bricolage Grotesque Primary */
     --font-sans: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Sora', sans-serif;
@@ -40,26 +40,26 @@
     --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* DARK MODE COLOR COMBO — Obsidian Matte Black & Electric Cyber Lime (#B5F82B) */
+/* EXECUTIVE MIDNIGHT SAPPHIRE & ELECTRIC AZURE BLUE (DARK MODE) */
 [data-theme="dark"] {
-    --bg-main: #08090C;
-    --bg-subtle: #0E1017;
-    --bg-card: #13151F;
-    --bg-card-hover: #191D2B;
+    --bg-main: #0B0F19;
+    --bg-subtle: #111827;
+    --bg-card: #1E293B;
+    --bg-card-hover: #334155;
 
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-hover: #B5F82B;
-    --border-lime: #B5F82B;
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-hover: #60A5FA;
+    --border-lime: #60A5FA;
 
     --text-primary: #FFFFFF;
     --text-secondary: #94A3B8;
     --text-muted: #64748B;
 
-    /* Dark Mode Electric Cyber Lime Accent */
-    --accent-lime: #B5F82B;
-    --accent-lime-dark: #A3E635;
-    --accent-lime-glow: rgba(181, 248, 43, 0.35);
-    --accent-lime-subtle: rgba(181, 248, 43, 0.12);
+    /* Dark Mode Azure Blue Accent */
+    --accent-lime: #3B82F6;
+    --accent-lime-dark: #60A5FA;
+    --accent-lime-glow: rgba(59, 130, 246, 0.35);
+    --accent-lime-subtle: rgba(59, 130, 246, 0.15);
 }
 
 /* Reset & Global Base */
@@ -2549,7 +2549,7 @@ img {
     gap: 0.8rem;
     padding: 1rem 2.2rem;
     background: var(--accent-lime);
-    color: #060709;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 0.95rem;
     border-radius: 50px;
@@ -2557,9 +2557,10 @@ img {
 }
 
 .btn-arrows-primary:hover {
-    background: #FFFFFF;
+    background: #0F172A;
+    color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(212, 255, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
 }
 
 .btn-arrows-secondary {
@@ -2659,7 +2660,7 @@ img {
     left: 1.2rem;
     padding: 0.45rem 1rem;
     background: var(--accent-lime);
-    color: #060709;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 0.78rem;
     border-radius: 50px;
@@ -2757,7 +2758,7 @@ img {
     gap: 0.6rem;
     padding: 0.85rem 1.8rem;
     background: var(--accent-lime);
-    color: #060709;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 0.9rem;
     border-radius: 50px;
@@ -2767,9 +2768,10 @@ img {
 }
 
 .btn-download-cv:hover {
-    background: #FFFFFF;
+    background: #0F172A;
+    color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(212, 255, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
 }
 
 .arrows-exp-grid {
@@ -2959,7 +2961,7 @@ img {
     gap: 0.8rem;
     padding: 1rem;
     background: var(--accent-lime);
-    color: #060709;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 0.95rem;
     border-radius: var(--radius-sm);
@@ -2969,6 +2971,7 @@ img {
 }
 
 .btn-submit-form:hover {
-    background: #FFFFFF;
-    box-shadow: 0 10px 25px rgba(212, 255, 0, 0.3);
+    background: #0F172A;
+    color: #FFFFFF;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
 }
