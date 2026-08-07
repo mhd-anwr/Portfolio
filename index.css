@@ -5,25 +5,25 @@
    ========================================================================== */
 
 :root {
-    /* Color Palette — Pitch Black & Neon Lime (arrowsdesign.me 1-to-1 exact) */
-    --bg-main: #060709;
-    --bg-subtle: #0E1015;
-    --bg-card: #12151D;
-    --bg-card-hover: #181C26;
+    /* Color Combination — Matte Dark Obsidian & Electric Cyber Lime (#B5F82B) */
+    --bg-main: #08090C;
+    --bg-subtle: #0E1017;
+    --bg-card: #13151F;
+    --bg-card-hover: #191D2B;
 
     --border-light: rgba(255, 255, 255, 0.08);
-    --border-hover: #D4FF00;
-    --border-lime: #D4FF00;
+    --border-hover: #B5F82B;
+    --border-lime: #B5F82B;
 
     --text-primary: #FFFFFF;
     --text-secondary: #94A3B8;
     --text-muted: #64748B;
 
-    /* Neon Lime Accent */
-    --accent-lime: #D4FF00;
+    /* Electric Cyber Lime Accent */
+    --accent-lime: #B5F82B;
     --accent-lime-dark: #A3E635;
-    --accent-lime-glow: rgba(212, 255, 0, 0.35);
-    --accent-lime-subtle: rgba(212, 255, 0, 0.12);
+    --accent-lime-glow: rgba(181, 248, 43, 0.35);
+    --accent-lime-subtle: rgba(181, 248, 43, 0.12);
 
     /* Typography Stack — Plus Jakarta Sans, Syne, Space Grotesk & Instrument Serif */
     --font-sans: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
