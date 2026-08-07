@@ -5,25 +5,25 @@
    ========================================================================== */
 
 :root {
-    /* PROFESSIONAL WHITE & ROYAL COBALT BLUE COLOR PALETTE */
-    --bg-main: #F8FAFC;
-    --bg-subtle: #F1F5F9;
-    --bg-card: #FFFFFF;
-    --bg-card-hover: #FFFFFF;
+    /* HIGH-END AWWWARDS DESIGNER PALETTE — NEON VIOLET & DEEP SPACE INDIGO */
+    --bg-main: #0A0914;
+    --bg-subtle: #100E26;
+    --bg-card: #14122B;
+    --bg-card-hover: #1E1A3F;
 
-    --border-light: rgba(37, 99, 235, 0.12);
-    --border-hover: #2563EB;
-    --border-lime: #2563EB;
+    --border-light: rgba(139, 92, 246, 0.18);
+    --border-hover: #8B5CF6;
+    --border-lime: #8B5CF6;
 
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
+    --text-primary: #FFFFFF;
+    --text-secondary: #C4B5FD;
+    --text-muted: #8B5CF6;
 
-    /* Professional Royal Cobalt Blue Accents */
-    --accent-lime: #2563EB;
-    --accent-lime-dark: #1D4ED8;
-    --accent-lime-glow: rgba(37, 99, 235, 0.25);
-    --accent-lime-subtle: rgba(37, 99, 235, 0.08);
+    /* Vivid Electric Neon Violet Accents */
+    --accent-lime: #8B5CF6;
+    --accent-lime-dark: #7C3AED;
+    --accent-lime-glow: rgba(139, 92, 246, 0.45);
+    --accent-lime-subtle: rgba(139, 92, 246, 0.15);
 
     /* Typography Stack — Bricolage Grotesque Primary */
     --font-sans: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Sora', sans-serif;
@@ -40,26 +40,25 @@
     --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* EXECUTIVE MIDNIGHT SAPPHIRE & ELECTRIC AZURE BLUE (DARK MODE) */
 [data-theme="dark"] {
-    --bg-main: #0B0F19;
-    --bg-subtle: #111827;
-    --bg-card: #1E293B;
-    --bg-card-hover: #334155;
+    --bg-main: #0A0914;
+    --bg-subtle: #100E26;
+    --bg-card: #14122B;
+    --bg-card-hover: #1E1A3F;
 
-    --border-light: rgba(255, 255, 255, 0.1);
-    --border-hover: #60A5FA;
-    --border-lime: #60A5FA;
+    --border-light: rgba(139, 92, 246, 0.18);
+    --border-hover: #A78BFA;
+    --border-lime: #A78BFA;
 
     --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
+    --text-secondary: #C4B5FD;
+    --text-muted: #9CA3AF;
 
-    /* Dark Mode Azure Blue Accent */
-    --accent-lime: #3B82F6;
-    --accent-lime-dark: #60A5FA;
-    --accent-lime-glow: rgba(59, 130, 246, 0.35);
-    --accent-lime-subtle: rgba(59, 130, 246, 0.15);
+    /* Vivid Neon Violet Accent */
+    --accent-lime: #8B5CF6;
+    --accent-lime-dark: #A78BFA;
+    --accent-lime-glow: rgba(139, 92, 246, 0.5);
+    --accent-lime-subtle: rgba(139, 92, 246, 0.18);
 }
 
 /* Reset & Global Base */
@@ -2557,10 +2556,10 @@ img {
 }
 
 .btn-arrows-primary:hover {
-    background: #0F172A;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #0A0914;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.45);
 }
 
 .btn-arrows-secondary {
@@ -2768,10 +2767,10 @@ img {
 }
 
 .btn-download-cv:hover {
-    background: #0F172A;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #0A0914;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.45);
 }
 
 .arrows-exp-grid {
@@ -2971,7 +2970,7 @@ img {
 }
 
 .btn-submit-form:hover {
-    background: #0F172A;
-    color: #FFFFFF;
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    background: #FFFFFF;
+    color: #0A0914;
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.45);
 }
