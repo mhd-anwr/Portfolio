@@ -84,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.clearRect(0, 0, width, height);
             const isDark = document.documentElement.getAttribute("data-theme") === "dark";
             const particleColor = isDark ? "212, 255, 0" : "9, 10, 12";
+            const alphaMult = isDark ? 0.45 : 0.75;
+            const lineAlphaMult = isDark ? 0.15 : 0.28;
 
             particles.forEach((p, index) => {
                 p.x += p.vx;
@@ -95,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (p.y > height) p.y = 0;
 
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${particleColor}, ${p.alpha * 0.45})`;
+                ctx.arc(p.x, p.y, p.radius * (isDark ? 1 : 1.3), 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${particleColor}, ${p.alpha * alphaMult})`;
                 ctx.fill();
 
                 for (let j = index + 1; j < particles.length; j++) {
@@ -109,8 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(${particleColor}, ${0.15 * (1 - dist / 130)})`;
-                        ctx.lineWidth = 0.8;
+                        ctx.strokeStyle = `rgba(${particleColor}, ${lineAlphaMult * (1 - dist / 130)})`;
+                        ctx.lineWidth = isDark ? 0.8 : 1.2;
                         ctx.stroke();
                     }
                 }
