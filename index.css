@@ -4183,3 +4183,567 @@ img {
     color: #0A0914;
     box-shadow: 0 10px 25px rgba(139, 92, 246, 0.45);
 }
+
+/* ========================================================================== 
+   HERO REDESIGN — LOCAL TO #hero
+   ========================================================================== */
+
+.fawell-hero {
+    --hero-pointer-x: 74%;
+    --hero-pointer-y: 42%;
+    --hero-accent: #f3ee77;
+    position: relative;
+    isolation: isolate;
+    min-height: max(700px, 100svh);
+    padding: clamp(8.5rem, 14vh, 11.5rem) 0 clamp(4rem, 8vh, 6.75rem);
+    overflow: clip;
+    text-align: left;
+    background:
+        radial-gradient(circle at 90% 12%, rgba(243, 238, 119, 0.08), transparent 24rem),
+        linear-gradient(115deg, #0c0c0d 0%, #101011 55%, #0b0b0c 100%);
+}
+
+.fawell-hero .aurora-glow-wrap,
+.fawell-hero .hero-top-tag,
+.fawell-hero .hero-main-title-wrap,
+.fawell-hero .hero-email-box {
+    display: none;
+}
+
+.fawell-hero .hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 0.46;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: clamp(3.5rem, 7vw, 7rem) clamp(3.5rem, 7vw, 7rem);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%);
+}
+
+.fawell-hero .hero-glow {
+    position: absolute;
+    top: var(--hero-pointer-y);
+    left: var(--hero-pointer-x);
+    z-index: -1;
+    width: min(56vw, 48rem);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0.95;
+    filter: blur(10px);
+    background: radial-gradient(circle, rgba(243, 238, 119, 0.14) 0%, rgba(243, 238, 119, 0.05) 31%, transparent 68%);
+    pointer-events: none;
+    will-change: top, left;
+}
+
+.fawell-hero .hero-orbit {
+    position: absolute;
+    top: 15.5%;
+    right: max(2.5rem, 8vw);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 7rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    animation: heroOrbit 18s linear infinite;
+}
+
+.fawell-hero .hero-orbit::before,
+.fawell-hero .hero-orbit::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+
+.fawell-hero .hero-orbit::before {
+    inset: 0.65rem;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+}
+
+.fawell-hero .hero-orbit::after {
+    top: -0.18rem;
+    left: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    transform: translateX(-50%);
+    background: var(--hero-accent);
+    box-shadow: 0 0 1.3rem rgba(243, 238, 119, 0.75);
+}
+
+.fawell-hero .hero-orbit-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.fawell-hero .hero-orbit-label {
+    position: absolute;
+    width: max-content;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.7);
+    transform: rotate(90deg) translateY(-4.9rem);
+    transform-origin: center;
+}
+
+.fawell-hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.fawell-hero .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(19rem, 0.88fr);
+    align-items: end;
+    gap: clamp(2rem, 7vw, 8rem);
+}
+
+.fawell-hero .hero-copy {
+    min-width: 0;
+}
+
+.fawell-hero .hero-eyebrow,
+.fawell-hero .hero-footnote,
+.fawell-hero .hero-actions,
+.fawell-hero .hero-availability {
+    display: flex;
+    align-items: center;
+}
+
+.fawell-hero .hero-eyebrow {
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: clamp(2.9rem, 7vh, 5rem);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.61);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.fawell-hero .hero-availability {
+    gap: 0.55rem;
+    color: #f4f4f1;
+}
+
+.fawell-hero .hero-availability i {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--hero-accent);
+    box-shadow: 0 0 0 0 rgba(243, 238, 119, 0.38);
+    animation: heroAvailability 2.2s ease-out infinite;
+}
+
+.fawell-hero .hero-location {
+    white-space: nowrap;
+}
+
+.fawell-hero .hero-kicker {
+    margin: 0 0 clamp(1rem, 2.2vw, 1.75rem);
+    color: var(--hero-accent);
+    font-size: clamp(0.7rem, 0.82vw, 0.82rem);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.fawell-hero .hero-display {
+    max-width: 11ch;
+    margin: 0;
+    overflow: hidden;
+    color: #f5f4ef;
+    font-family: var(--font-sans);
+    font-size: clamp(3.8rem, 7.15vw, 8.5rem);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: -0.075em;
+}
+
+.fawell-hero .hero-title-line {
+    display: block;
+    padding: 0.04em 0.08em 0.1em 0;
+    transform-origin: left bottom;
+}
+
+.fawell-hero .hero-title-line--accent {
+    color: var(--hero-accent);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08em;
+    font-weight: 400;
+    letter-spacing: -0.09em;
+}
+
+.fawell-hero .hero-title-line--accent em {
+    display: inline-block;
+    font-style: italic;
+}
+
+.fawell-hero .hero-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 18rem) 1fr;
+    align-items: end;
+    gap: clamp(1.5rem, 3vw, 3.5rem);
+    margin-top: clamp(2.1rem, 5vh, 4.25rem);
+}
+
+.fawell-hero .hero-summary {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+    line-height: 1.65;
+}
+
+.fawell-hero .hero-actions {
+    flex-wrap: wrap;
+    gap: 0.85rem 1.35rem;
+}
+
+.fawell-hero .hero-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    min-height: 3.1rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: #0b0b0c;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: transform 360ms var(--ease-out-expo), background-color 360ms ease, color 360ms ease, border-color 360ms ease;
+}
+
+.fawell-hero .hero-cta i {
+    font-size: 0.9rem;
+    transition: transform 360ms var(--ease-out-expo);
+}
+
+.fawell-hero .hero-cta:hover {
+    transform: translateY(-3px);
+}
+
+.fawell-hero .hero-cta:hover i {
+    transform: translate(0.15rem, -0.15rem);
+}
+
+.fawell-hero .hero-cta:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+.fawell-hero .hero-cta--primary {
+    padding: 0.75rem 1.25rem 0.75rem 1.4rem;
+    background: var(--hero-accent);
+}
+
+.fawell-hero .hero-cta--primary:hover {
+    background: #ffffff;
+}
+
+.fawell-hero .hero-cta--text {
+    padding: 0.75rem 0;
+    color: rgba(255, 255, 255, 0.87);
+    border-radius: 0;
+    border-bottom-color: rgba(255, 255, 255, 0.28);
+}
+
+.fawell-hero .hero-cta--text:hover {
+    color: var(--hero-accent);
+    border-bottom-color: var(--hero-accent);
+}
+
+.fawell-hero .hero-footnote {
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: clamp(3rem, 7.5vh, 6rem);
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fawell-hero .hero-footnote span:last-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.fawell-hero .hero-footnote i {
+    color: var(--hero-accent);
+    animation: heroScrollCue 1.8s ease-in-out infinite;
+}
+
+.fawell-hero .hero-art {
+    position: relative;
+    width: min(100%, 31rem);
+    margin-left: auto;
+    padding: 0 2.1rem 2.4rem 0;
+}
+
+.fawell-hero .hero-art-frame {
+    position: relative;
+    aspect-ratio: 0.81;
+    overflow: hidden;
+    border-radius: 0.15rem;
+    background: #252526;
+    box-shadow: 1.6rem 1.6rem 0 rgba(243, 238, 119, 0.94), 0 1.5rem 4rem rgba(0, 0, 0, 0.42);
+    cursor: none;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.fawell-hero .hero-art-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
+    transform: translateX(-125%);
+    transition: opacity 250ms ease, transform 750ms var(--ease-out-expo);
+}
+
+.fawell-hero .hero-art-frame:hover::before {
+    opacity: 1;
+    transform: translateX(125%);
+}
+
+.fawell-hero .hero-art-frame .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 23%;
+    filter: saturate(0.78) contrast(1.08);
+    transform: scale(1.025);
+    transition: transform 800ms var(--ease-out-expo), filter 500ms ease;
+}
+
+.fawell-hero .hero-art-frame:hover .hero-image {
+    filter: saturate(0.96) contrast(1.04);
+    transform: scale(1.08);
+}
+
+.fawell-hero .hero-art-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(11, 11, 12, 0.06) 30%, rgba(11, 11, 12, 0.62) 100%);
+}
+
+.fawell-hero .hero-art-index {
+    position: absolute;
+    z-index: 3;
+    right: 1rem;
+    bottom: 0.9rem;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.fawell-hero .hero-caption {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    gap: 0.85rem;
+    width: min(15rem, 57%);
+    padding: 0.9rem 1rem;
+    background: rgba(12, 12, 13, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(12px);
+}
+
+.fawell-hero .hero-caption--top {
+    top: 8%;
+    left: -3.5rem;
+}
+
+.fawell-hero .hero-caption-number {
+    color: var(--hero-accent);
+    font-size: 0.66rem;
+    font-weight: 800;
+}
+
+.fawell-hero .hero-caption p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.7rem;
+    line-height: 1.45;
+}
+
+.fawell-hero .hero-profile-card {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.55rem 1rem;
+    width: min(17rem, 69%);
+    padding: 1.05rem 1.1rem;
+    background: var(--hero-accent);
+    color: #0b0b0c;
+    transform: translateY(1.4rem);
+}
+
+.fawell-hero .hero-profile-card span {
+    grid-column: 1 / -1;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.fawell-hero .hero-profile-card strong {
+    font-size: clamp(0.87rem, 1.25vw, 1rem);
+    line-height: 1.22;
+}
+
+.fawell-hero .hero-profile-card i {
+    align-self: end;
+    padding-bottom: 0.12rem;
+}
+
+@keyframes heroOrbit {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes heroAvailability {
+    70%, 100% { box-shadow: 0 0 0 0.5rem rgba(243, 238, 119, 0); }
+}
+
+@keyframes heroScrollCue {
+    50% { transform: translateY(0.35rem); }
+}
+
+@media (max-width: 1080px) {
+    .fawell-hero .hero-layout {
+        gap: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .fawell-hero .hero-art {
+        width: min(100%, 26rem);
+    }
+
+    .fawell-hero .hero-caption--top {
+        left: -1.5rem;
+    }
+}
+
+@media (max-width: 820px) {
+    .fawell-hero {
+        min-height: auto;
+        padding-top: 8.5rem;
+    }
+
+    .fawell-hero .hero-orbit {
+        top: 7.75rem;
+        right: 1.5rem;
+        width: 4.5rem;
+    }
+
+    .fawell-hero .hero-orbit-label {
+        display: none;
+    }
+
+    .fawell-hero .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 4.5rem;
+    }
+
+    .fawell-hero .hero-display {
+        max-width: 9.5ch;
+        font-size: clamp(4rem, 13vw, 7rem);
+    }
+
+    .fawell-hero .hero-art {
+        width: min(90%, 30rem);
+        margin: 0 auto;
+        padding-right: 1.45rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .fawell-hero {
+        padding-top: 7.5rem;
+        padding-bottom: 4.25rem;
+    }
+
+    .fawell-hero .hero-eyebrow {
+        margin-bottom: 2.7rem;
+        font-size: 0.56rem;
+        letter-spacing: 0.08em;
+    }
+
+    .fawell-hero .hero-location {
+        display: none;
+    }
+
+    .fawell-hero .hero-kicker {
+        max-width: 20rem;
+        font-size: 0.6rem;
+        line-height: 1.5;
+    }
+
+    .fawell-hero .hero-display {
+        font-size: clamp(3.55rem, 16vw, 5.4rem);
+        line-height: 0.9;
+    }
+
+    .fawell-hero .hero-lower {
+        grid-template-columns: 1fr;
+        gap: 1.7rem;
+        margin-top: 2.5rem;
+    }
+
+    .fawell-hero .hero-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .fawell-hero .hero-footnote {
+        margin-top: 3.5rem;
+        font-size: 0.55rem;
+    }
+
+    .fawell-hero .hero-footnote span:last-child {
+        display: none;
+    }
+
+    .fawell-hero .hero-caption--top {
+        top: 1rem;
+        left: -0.5rem;
+        width: min(13rem, 65%);
+    }
+
+    .fawell-hero .hero-profile-card {
+        width: min(15.5rem, 80%);
+        padding: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fawell-hero *,
+    .fawell-hero *::before,
+    .fawell-hero *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

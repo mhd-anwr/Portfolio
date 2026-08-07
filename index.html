@@ -100,9 +100,14 @@
         <div id="smooth-content">
 
             <!-- 1. HERO SECTION -->
-            <section class="fawell-hero hero" id="hero">
+            <section class="fawell-hero hero" id="hero" aria-labelledby="hero-title">
                 <!-- Exact Mouse-Following Aurora Radial Glow Element -->
                 <div class="hero-glow" id="hero-glow"></div>
+                <div class="hero-grid" aria-hidden="true"></div>
+                <div class="hero-orbit" aria-hidden="true">
+                    <span class="hero-orbit-dot"></span>
+                    <span class="hero-orbit-label">FORM / FUNCTION</span>
+                </div>
 
                 <!-- Ambient Glow Light Orbs -->
                 <div class="aurora-glow-wrap" id="aurora-glow-wrap">
@@ -112,6 +117,62 @@
                 </div>
 
                 <div class="container hero-content">
+                    <div class="hero-layout">
+                        <div class="hero-copy">
+                            <div class="hero-eyebrow" data-hero-reveal>
+                                <span class="hero-availability"><i></i> Available for select projects</span>
+                                <span class="hero-location">India / Remote</span>
+                            </div>
+
+                            <p class="hero-kicker" data-hero-reveal>Independent designer &amp; digital creative</p>
+
+                            <h1 class="hero-display" id="hero-title">
+                                <span class="hero-title-line">Simple ideas.</span>
+                                <span class="hero-title-line">Meaningful</span>
+                                <span class="hero-title-line hero-title-line--accent"><em>experiences.</em></span>
+                            </h1>
+
+                            <div class="hero-lower" data-hero-reveal>
+                                <p class="hero-summary">I turn curious thinking into considered identities, interfaces, and visual systems that feel clear from the first click.</p>
+
+                                <div class="hero-actions" aria-label="Hero actions">
+                                    <a class="hero-cta hero-cta--primary" href="#works" data-cursor-text="Explore">
+                                        <span>Explore selected work</span>
+                                        <i class="fa-solid fa-arrow-down-right" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="hero-cta hero-cta--text" href="#contact" data-cursor-text="Contact">
+                                        <span>Start a conversation</span>
+                                        <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="hero-footnote" data-hero-reveal>
+                                <span>01 — Portfolio 2026</span>
+                                <span>Scroll to discover <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="hero-art" data-hero-reveal>
+                            <div class="hero-art-frame" data-hero-art>
+                                <img src="assets/images/portrait.png" alt="Portrait of Muhammed Anwar" class="hero-image" fetchpriority="high">
+                                <div class="hero-art-shade" aria-hidden="true"></div>
+                                <span class="hero-art-index">AW / 01</span>
+                            </div>
+
+                            <div class="hero-caption hero-caption--top">
+                                <span class="hero-caption-number">01</span>
+                                <p>Built with equal parts clarity, craft, and a little tension.</p>
+                            </div>
+
+                            <div class="hero-profile-card">
+                                <span>Currently</span>
+                                <strong>Designing brands<br>that move people.</strong>
+                                <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="hero-top-tag">
                         <span class="pill-mini">[ Hi, Free For All Services ]</span>
                         <span class="starburst-icon">✦</span>
@@ -646,7 +707,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
