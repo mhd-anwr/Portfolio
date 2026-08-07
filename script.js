@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursorText = document.getElementById("cursor-text");
 
     // --------------------------------------------------
-    // 2.5. INTERACTIVE LIQUID WATER WAVE CANVAS
+    // 2.5. REAL FLUID WATER RIPPLE CANVAS (CURSOR TRAIL)
     // --------------------------------------------------
     const bgCanvas = document.getElementById("bg-canvas");
     if (bgCanvas) {
@@ -65,51 +65,101 @@ document.addEventListener("DOMContentLoaded", () => {
             height = bgCanvas.height = window.innerHeight;
         });
 
-        let step = 0;
+        const ripples = [];
         let mouseX = width / 2;
+        let mouseY = height / 2;
+        let prevMouseX = mouseX;
+        let prevMouseY = mouseY;
 
+        // Emit water ripples directly trailing mouse cursor
         window.addEventListener("mousemove", (e) => {
+            const dx = e.clientX - prevMouseX;
+            const dy = e.clientY - prevMouseY;
+            const speed = Math.sqrt(dx * dx + dy * dy);
+
+            if (speed > 3) {
+                ripples.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    radius: 2,
+                    maxRadius: 75 + Math.min(speed * 2.5, 110),
+                    alpha: 0.65,
+                    speed: 2.5 + speed * 0.06
+                });
+                if (ripples.length > 35) ripples.shift();
+            }
+
+            prevMouseX = e.clientX;
+            prevMouseY = e.clientY;
             mouseX = e.clientX;
+            mouseY = e.clientY;
         });
 
-        const waveColors = [
-            "rgba(139, 92, 246, 0.18)", // Vivid Neon Violet
-            "rgba(124, 58, 237, 0.12)", // Deep Indigo
-            "rgba(167, 139, 250, 0.08)", // Soft Purple
-            "rgba(6, 182, 212, 0.06)"   // Electric Cyan Ripple
-        ];
+        let step = 0;
 
-        function animateWaterWaves() {
+        function animateWaterRipples() {
             ctx.clearRect(0, 0, width, height);
-            step += 0.015;
+            step += 0.02;
 
-            for (let i = 0; i < 4; i++) {
+            // 1. Organic liquid water waves following mouse Y height
+            for (let i = 0; i < 3; i++) {
                 ctx.beginPath();
                 ctx.moveTo(0, height);
 
-                const waveHeight = 35 + i * 18;
-                const wavelength = 0.0038 - i * 0.0007;
-                const speed = step * (1 + i * 0.25);
-                const baseLine = height * 0.55 + i * 38;
+                const waveAmplitude = 25 + i * 15;
+                const waveFreq = 0.003 + i * 0.001;
+                const baseHeight = height * 0.5 + Math.sin(step + i) * 30;
 
-                for (let x = 0; x <= width; x += 10) {
-                    const mouseDist = Math.abs(x - mouseX);
-                    const mouseFactor = mouseDist < 260 ? (1 - mouseDist / 260) * 35 * Math.sin(step * 4) : 0;
+                for (let x = 0; x <= width; x += 15) {
+                    const distToMouse = Math.hypot(x - mouseX, baseHeight - mouseY);
+                    const cursorInfluence = distToMouse < 320 ? (1 - distToMouse / 320) * 50 * Math.sin(step * 5 + x * 0.01) : 0;
 
-                    const y = baseLine + Math.sin(x * wavelength + speed) * waveHeight + Math.cos(x * 0.0018 + speed) * 15 + mouseFactor;
+                    const y = baseHeight + Math.sin(x * waveFreq + step * (1 + i * 0.3)) * waveAmplitude + cursorInfluence;
                     ctx.lineTo(x, y);
                 }
 
                 ctx.lineTo(width, height);
                 ctx.closePath();
+
+                const waveColors = [
+                    "rgba(139, 92, 246, 0.14)", // Vivid Neon Violet
+                    "rgba(124, 58, 237, 0.09)", // Deep Indigo
+                    "rgba(6, 182, 212, 0.05)"   // Cyan Water Glow
+                ];
                 ctx.fillStyle = waveColors[i];
                 ctx.fill();
             }
 
-            requestAnimationFrame(animateWaterWaves);
+            // 2. Interactive expanding liquid water ripple rings at cursor coordinates
+            for (let i = ripples.length - 1; i >= 0; i--) {
+                const r = ripples[i];
+                r.radius += r.speed;
+                r.alpha *= 0.955;
+
+                if (r.alpha <= 0.01 || r.radius >= r.maxRadius) {
+                    ripples.splice(i, 1);
+                    continue;
+                }
+
+                // Primary water wave ripple
+                ctx.beginPath();
+                ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(167, 139, 250, ${r.alpha})`;
+                ctx.lineWidth = 1.8;
+                ctx.stroke();
+
+                // Secondary cyan echo wave
+                ctx.beginPath();
+                ctx.arc(r.x, r.y, r.radius * 0.65, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(6, 182, 212, ${r.alpha * 0.55})`;
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            }
+
+            requestAnimationFrame(animateWaterRipples);
         }
 
-        animateWaterWaves();
+        animateWaterRipples();
     }
 
     if (cursorDot && cursorRing) {
