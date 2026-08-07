@@ -616,20 +616,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactForm = document.getElementById("contact-form");
 
     if (contactForm) {
-
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            console.log("FORM SUBMITTED");   // <-- Add this line here
-
             const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = "<span>Sending...</span>";
+            }
 
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = "Sending...";
+            const nameEl = document.getElementById("name") || document.getElementById("form-name");
+            const emailEl = document.getElementById("email") || document.getElementById("form-email");
+            const msgEl = document.getElementById("message") || document.getElementById("form-message");
 
-            const formName = document.getElementById("form-name") ? document.getElementById("form-name").value : "";
-            const formEmail = document.getElementById("form-email") ? document.getElementById("form-email").value : "";
-            const formMessage = document.getElementById("form-message") ? document.getElementById("form-message").value : "";
+            const formName = nameEl ? nameEl.value : "";
+            const formEmail = emailEl ? emailEl.value : "";
+            const formMessage = msgEl ? msgEl.value : "";
 
             const templateParams = {
                 name: formName,
@@ -646,42 +648,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 templateParams,
                 "gz2f1kp7L-ae3kKgV"
             )
-
-                .then(() => {
-
-                    showToast(
-                        "Your message has been sent successfully!",
-                        "fa-solid fa-paper-plane"
-                    );
-
-                    contactForm.reset();
-
-                })
-
-                .catch((error) => {
-
-                    console.error(error);
-
-                    showToast(
-                        "Failed to send message.",
-                        "fa-solid fa-circle-exclamation"
-                    );
-
-                })
-
-                .finally(() => {
-
+            .then(() => {
+                showToast("Your message has been sent successfully!", "fa-solid fa-paper-plane");
+                contactForm.reset();
+            })
+            .catch((error) => {
+                console.error(error);
+                showToast("Failed to send message.", "fa-solid fa-circle-exclamation");
+            })
+            .finally(() => {
+                if (submitBtn) {
                     submitBtn.disabled = false;
-
                     submitBtn.innerHTML = `
-                <span>Let's Talk</span>
-                <i class="fa-solid fa-paper-plane"></i>
-            `;
-
-                });
-
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    `;
+                }
+            });
         });
-
     }
     // --------------------------------------------------
     // 11. TOAST NOTIFICATIONS

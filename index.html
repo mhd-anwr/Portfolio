@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammed Anwar — Graphic Designer</title>
+    <title>Muhammed Anwar — Graphic Designer & UI/UX Specialist</title>
     <meta name="description"
-        content="Personal portfolio of Muhammed Anwar, a self-taught Graphic Designer & UI/UX Designer specializing in brand identity, logo design, UI/UX, and visual storytelling.">
+        content="Personal portfolio of Muhammed Anwar, a self-taught Graphic Designer & UI/UX Specialist specializing in brand identity, logo design, UI/UX, and visual storytelling.">
 
     <!-- Google Fonts: Bricolage Grotesque, Plus Jakarta Sans, Syne, Space Grotesk, Sora & Instrument Serif -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,17 +21,16 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="loader-content">
-            <div class="loader-brand">ANWAR<span class="dot">.</span></div>
-            <div class="loader-progress-bar">
-                <div class="loader-progress" id="loader-progress"></div>
-            </div>
-            <div class="loader-counter"><span id="loader-percent">0</span>%</div>
-            <div class="loader-sub">GRAPHIC DESIGNER</div>
-        </div>
-    </div>
+    <!-- Clean Dynamic Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Ambient Glowing Light Orbs -->
+    <div class="bg-orb bg-orb-1" id="bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2" id="bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3" id="bg-orb-3"></div>
+
+    <!-- Subtle Dot Grid Matrix Overlay -->
+    <div class="bg-grid-overlay"></div>
 
     <!-- Custom Dual-Ring Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -39,45 +38,22 @@
         <span class="cursor-text" id="cursor-text"></span>
     </div>
 
-    <!-- Clean Animated Ambient Background Layer -->
-    <div class="bg-ambient-layer" aria-hidden="true">
-        <!-- Interactive Particle Canvas -->
-        <canvas id="bg-canvas"></canvas>
-
-        <!-- Ambient Glowing Light Orbs -->
-        <div class="ambient-glow glow-lime-hero" id="bg-orb-1"></div>
-        <div class="ambient-glow glow-lime-bento" id="bg-orb-2"></div>
-        <div class="ambient-glow glow-lime-center" id="bg-orb-3"></div>
-
-        <!-- Grid Pattern Overlay -->
-        <div class="bg-grid-overlay"></div>
-    </div>
-
-    <!-- Header Navigation -->
+    <!-- Header / Navigation Bar -->
     <header class="navbar" id="navbar">
-        <a href="#" class="logo magnetic" data-cursor-text="ANWAR">
-            <span class="logo-name">MUHAMMED ANWAR</span>
+        <a href="#hero" class="nav-logo magnetic" data-cursor-text="HOME">
+            <span class="logo-mark">ANWAR.</span>
         </a>
 
-        <div class="nav-status magnetic">
-            <span class="pulse-beacon"></span>
-            <span class="status-text">AVAILABLE FOR FREELANCE & INTERNSHIPS</span>
-        </div>
-
         <nav class="nav-menu" id="nav-menu">
-            <ul class="nav-list">
-                <li><a href="#hero" class="nav-link magnetic" data-cursor-text="HOME">Home</a></li>
-                <li><a href="#about" class="nav-link magnetic" data-cursor-text="ABOUT">About</a></li>
-                <li><a href="#work" class="nav-link magnetic" data-cursor-text="WORK">Projects</a></li>
-                <li><a href="#process" class="nav-link magnetic" data-cursor-text="PROCESS">Process</a></li>
-                <li><a href="#skills" class="nav-link magnetic" data-cursor-text="STACK">Skills</a></li>
-                <li><a href="#experience" class="nav-link magnetic" data-cursor-text="PATH">Experience</a></li>
-            </ul>
+            <a href="#works" class="nav-link magnetic">Selected Works</a>
+            <a href="#skills" class="nav-link magnetic">Tools & expertise</a>
+            <a href="#resume" class="nav-link magnetic">Experience & Education</a>
+            <a href="#contact" class="nav-link magnetic">Let's connect</a>
         </nav>
 
         <div class="nav-actions">
-            <button class="theme-toggle magnetic" id="theme-toggle" aria-label="Toggle dark/light mode" data-cursor-text="THEME">
-                <i class="fa-solid fa-moon"></i>
+            <button class="theme-toggle magnetic" id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fa-solid fa-sun"></i>
             </button>
             <a href="#contact" class="btn-primary magnetic" data-cursor-text="TALK">
                 <span>GET IN TOUCH</span>
@@ -375,578 +351,20 @@
                 </div>
             </section>
 
-            <!-- 2. About Me Section -->
-            <section class="about-section" id="about">
+            <!-- Footer (arrowsdesign.me 1-to-1) -->
+            <footer class="site-footer">
                 <div class="container">
-                    <div class="section-tag-row reveal-item">
-                        <span class="section-num">01.</span>
-                        <span class="section-tag">[ ABOUT ME ]</span>
-                    </div>
-
-                    <div class="about-grid">
-                        <div class="about-main-text reveal-item">
-                            <h2 class="about-headline">
-                                I create memorable <span class="highlight-serif">brand identities</span>,
-                                <span class="highlight-serif">digital experiences</span>, and visual stories that
-                                leave a lasting impression.
-                            </h2>
-                            <div class="about-paragraphs">
-                                <p>
-                                    My design journey started with curiosity rather than a classroom.
-                                    Through continuous practice, real-world projects, and self-learning,
-                                    I've developed a design approach that combines strategy, simplicity, and visual
-                                    impact.
-                                </p>
-                                <p>
-                                    Today I work across branding, logo design, UI/UX, and visual communication,
-                                    creating work that is clean, purposeful, and built to solve real problems.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- 3 Core Philosophy Cards -->
-                        <div class="about-cards-col">
-                            <div class="philosophy-card hover-tilt reveal-item">
-                                <div class="card-num">01</div>
-                                <h3 class="card-title">Brand Strategy</h3>
-                                <p class="card-desc">Helping brands define their identity
-                                    through research, positioning, and visual systems.</p>
-                            </div>
-
-                            <div class="philosophy-card hover-tilt reveal-item">
-                                <div class="card-num">02</div>
-                                <h3 class="card-title">Logo & Identity</h3>
-                                <p class="card-desc">Creating timeless logos and scalable brand
-                                    identities for businesses and institutions.</p>
-                            </div>
-
-                            <div class="philosophy-card hover-tilt reveal-item">
-                                <div class="card-num">03</div>
-                                <h3 class="card-title">Digital Experience</h3>
-                                <p class="card-desc">Designing clean, user-focused websites and
-                                    interfaces with clarity and usability.</p>
-                            </div>
+                    <div class="footer-content">
+                        <p>© 2026 MUHAMMED ANWAR. All rights reserved.</p>
+                        <div class="footer-socials">
+                            <a href="https://github.com/mhd-anwr" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://linkedin.com/in/anwar-undefined-1aa183340" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://behance.net/mhd_awr" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+                            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- 3. Selected Projects Section (Bento Grid) -->
-            <section class="works-section" id="work">
-                <div class="container">
-                    <div class="works-header-row reveal-item">
-                        <div>
-                            <div class="section-tag-row">
-                                <span class="section-num">02.</span>
-                                <span class="section-tag">[ FEATURED CASE STUDIES ]</span>
-                            </div>
-                            <h2 class="section-title">Selected <i>Work</i></h2>
-                        </div>
-
-                        <!-- Filter Tabs -->
-                        <div class="filter-tabs">
-                            <button class="filter-btn active magnetic" data-filter="all">ALL (06)</button>
-                            <button class="filter-btn magnetic" data-filter="branding">BRANDING</button>
-                            <button class="filter-btn magnetic" data-filter="logos">LOGOS</button>
-                            <button class="filter-btn magnetic" data-filter="graphic">GRAPHIC DESIGN</button>
-                            <button class="filter-btn magnetic" data-filter="uiux">UI/UX</button>
-                        </div>
-                    </div>
-
-                    <!-- 6 Bento-Style Project Cards -->
-                    <div class="bento-works-grid">
-
-                        <!-- Project 1: Tea Café Branding (Large Bento Card) -->
-                        <article class="bento-work-card bento-span-7 project-card-trigger reveal-item"
-                            data-category="branding" data-project="tea_cafe" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/tea_cafe.png" alt="Tea Café Branding" class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">BRAND IDENTITY</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">01</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">Tea Café Branding</h3>
-                                <p class="work-summary">Comprehensive brand identity system, organic tea packaging
-                                    design, ceramic tableware motifs, and store collateral for an artisanal tea lounge.
-                                </p>
-                                <div class="work-tags">
-                                    <span>BRAND IDENTITY</span>
-                                    <span>PACKAGING</span>
-                                    <span>VISUAL SYSTEM</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 2: Logo Collection (Span 5) -->
-                        <article class="bento-work-card bento-span-5 project-card-trigger reveal-item"
-                            data-category="logos" data-project="logos" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/logo_collection.jpg" alt="Logo Collection" class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">LOGOFOLIO</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">02</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">Logo Collection</h3>
-                                <p class="work-summary">A curated collection of minimalist logos, geometric marks, and
-                                    corporate symbols designed with mathematical grid precision.</p>
-                                <div class="work-tags">
-                                    <span>LOGOMARKS</span>
-                                    <span>VECTOR</span>
-                                    <span>IDENTITY</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 3: Social Media Designs (Span 4) -->
-                        <article class="bento-work-card bento-span-4 project-card-trigger reveal-item"
-                            data-category="graphic" data-project="social" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/social_media.jpg" alt="Social Media Designs" class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">GRAPHIC DESIGN</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">03</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">Social Media Designs</h3>
-                                <p class="work-summary">High-impact social media campaign layouts, carousel post series,
-                                    and visual grid strategies tailored for brand engagement.</p>
-                                <div class="work-tags">
-                                    <span>SOCIAL CONTENT</span>
-                                    <span>GRID LAYOUTS</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 4: Posters (Span 4) -->
-                        <article class="bento-work-card bento-span-4 project-card-trigger reveal-item"
-                            data-category="graphic" data-project="posters" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/posters.jpg" alt="Posters" class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">GRAPHIC DESIGN</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">04</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">Posters</h3>
-                                <p class="work-summary">Experimental Swiss-style typographic poster designs, cultural
-                                    exhibition prints, and bold geometric compositions.</p>
-                                <div class="work-tags">
-                                    <span>SWISS TYPOGRAPHY</span>
-                                    <span>PRINT</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 5: UI/UX Concepts (Span 4) -->
-                        <article class="bento-work-card bento-span-4 project-card-trigger reveal-item"
-                            data-category="uiux" data-project="uiux" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/uiux_concepts.jpg" alt="UI/UX Concepts" class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">UI/UX DESIGN</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">05</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">UI/UX Concepts</h3>
-                                <p class="work-summary">Apple-inspired mobile application interfaces, glassmorphic
-                                    dashboards, wireframes, and scalable design system components.</p>
-                                <div class="work-tags">
-                                    <span>MOBILE APP</span>
-                                    <span>WEB UI</span>
-                                    <span>FIGMA</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 6: Photo Manipulation (Span 12 / Featured Wide) -->
-                        <article class="bento-work-card bento-span-12 bento-card-wide project-card-trigger reveal-item"
-                            data-category="graphic" data-project="photo_manip" data-cursor-text="VIEW">
-                            <div class="work-img-wrapper">
-                                <img src="assets/images/photo_manipulation.jpg" alt="Photo Manipulation"
-                                    class="work-img">
-                                <div class="work-glass-overlay"></div>
-                                <span class="bento-category-pill">GRAPHIC DESIGN</span>
-                            </div>
-                            <div class="work-content">
-                                <div class="work-meta-top">
-                                    <span class="work-num">06</span>
-                                    <span class="work-year">2026</span>
-                                </div>
-                                <h3 class="work-title">Photo Manipulation</h3>
-                                <p class="work-summary">Creative Photoshop compositions, surreal digital art,
-                                    atmospheric lighting blends, and photo retouching benchmark showcases.</p>
-                                <div class="work-tags">
-                                    <span>PHOTOSHOP ART</span>
-                                    <span>SURREALISM</span>
-                                    <span>DIGITAL COMPOSITING</span>
-                                </div>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. Design Process Section -->
-            <section class="process-section" id="process">
-                <div class="container">
-                    <div class="section-tag-row reveal-item">
-                        <span class="section-num">03.</span>
-                        <span class="section-tag">[ DESIGN PROCESS ]</span>
-                    </div>
-
-                    <div class="process-header reveal-item">
-                        <h2 class="section-title">MY DESIGN <i>PROCESS</i></h2>
-                        <p class="section-subtitle">From discovery to delivery, every project follows a thoughtful
-                            process focused on solving problems through purposeful design.</p>
-                    </div>
-
-                    <div class="process-grid">
-                        <div class="process-card hover-tilt reveal-item">
-                            <div class="process-step-num">01</div>
-                            <h3 class="process-title">Discover & Understand</h3>
-                            <p class="process-desc">Every project starts with listening. I explore the client's goals,
-                                audience, brand personality, and market before making any design decisions.</p>
-                            <div class="process-pill">Research • Strategy</div>
-                        </div>
-
-                        <div class="process-card hover-tilt reveal-item">
-                            <div class="process-step-num">02</div>
-                            <h3 class="process-title">Explore & Define</h3>
-                            <p class="process-desc">I develop concepts through moodboards, sketches, typography, color
-                                exploration, and creative direction to establish a strong visual foundation.</p>
-                            <div class="process-pill">Ideas • Direction</div>
-                        </div>
-
-                        <div class="process-card hover-tilt reveal-item">
-                            <div class="process-step-num">03</div>
-                            <h3 class="process-title">Design & Develop</h3>
-                            <p class="process-desc">Once the direction is finalized, I craft refined brand identities,
-                                interfaces, and visual assets with attention to clarity, consistency, and detail.</p>
-                            <div class="process-pill">Execution • Design</div>
-                        </div>
-
-                        <div class="process-card hover-tilt reveal-item">
-                            <div class="process-step-num">04</div>
-                            <h3 class="process-title">Refine & Deliver</h3>
-                            <p class="process-desc">Every design is reviewed, refined, and prepared for production,
-                                ensuring polished, organized assets ready for digital and print applications.</p>
-                            <div class="process-pill">Quality • Delivery</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. Tools & Skills Section -->
-            <section class="skills-section" id="skills">
-                <div class="container">
-                    <div class="section-tag-row reveal-item">
-                        <span class="section-num">04.</span>
-                        <span class="section-tag">[ TOOLS & EXPERTISE ]</span>
-                    </div>
-
-                    <div class="skills-header reveal-item">
-                        <h2 class="section-title">CREATIVE<i>TOOLKIT</i></h2>
-                        <p class="section-subtitle">A curated set of creative tools I use to craft brand identities,
-                            digital experiences, and visual communication.</p>
-                    </div>
-
-                    <!-- Highlighted Grid of 7 Explicitly Requested Skills -->
-                    <div class="skills-bento-grid">
-
-                        <!-- 1. Photoshop -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/ps_logo.png" alt="Adobe Photoshop" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">Photoshop</h3>
-                            <span class="skill-category">
-                                Photo Editing & Compositing
-                            </span>
-                            <p class="skill-desc">
-                                Professional photo retouching, image manipulation, mockup editing, visual compositions,
-                                and marketing graphics.
-                            </p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width:92%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 2. Illustrator -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/ai_logo.png" alt="Illustrator" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">Illustrator</h3>
-                            <span class="skill-category">Brand Identity & Logo Design</span>
-                            <p class="skill-desc">Creating scalable logos, brand systems, icons, packaging,
-                                illustrations, and print-ready vector artwork.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 3. Figma -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/figma_logo.png" alt="Figma" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">Figma</h3>
-                            <span class="skill-category">UI/UX & Prototyping</span>
-                            <p class="skill-desc">Designing intuitive interfaces, interactive prototypes, design
-                                systems, and responsive user experiences.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Canva -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/canva-seeklogo.png" alt="Canva" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">Canva</h3>
-                            <span class="skill-category">Marketing Design</span>
-                            <p class="skill-desc">Producing social media graphics, presentations, promotional materials,
-                                and quick visual content.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 5. HTML -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/html5_logo.png" alt="HTML" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">HTML</h3>
-                            <span class="skill-category">Frontend Structure</span>
-                            <p class="skill-desc">Building semantic, accessible page structures that provide a strong
-                                foundation for responsive websites.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 6. CSS -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/css3_logo.png" alt="CSS" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">CSS</h3>
-                            <span class="skill-category">Visual Styling</span>
-                            <p class="skill-desc">Creating modern layouts, responsive interfaces, animations, and
-                                polished visual experiences.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-
-                        <!-- 7. JavaScript -->
-                        <div class="skill-card hover-tilt reveal-item">
-                            <div class="skill-icon-box">
-                                <img src="assets/images/java_logo.png" alt="JavaScript" class="skill-logo">
-                            </div>
-                            <h3 class="skill-name">JavaScript</h3>
-                            <span class="skill-category">Interactive Experiences</span>
-                            <p class="skill-desc">Adding dynamic interactions, animations, smooth scrolling, and
-                                engaging user experiences.</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%;"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. Experience Section -->
-            <section class="experience-section" id="experience">
-                <div class="container">
-                    <div class="section-tag-row reveal-item">
-                        <span class="section-num">05.</span>
-                        <span class="section-tag">[ EXPERIENCE ]</span>
-                    </div>
-
-                    <div class="experience-header reveal-item">
-                        <h2 class="section-title">PROFESSIONAL<i>EXPERIENCE</i></h2>
-                        <p class="section-subtitle">Building practical experience through freelance projects, continuous
-                            learning, and real-world design challenges.
-                        </p>
-                    </div>
-
-                    <div class="timeline-container">
-
-                        <!-- Timeline Item: Freelance Graphic Designer -->
-                        <div class="timeline-card hover-tilt reveal-item">
-                            <div class="timeline-badge">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="timeline-meta">
-                                    <span class="role-title">Freelance Graphic Designer & UI/UX Designer</span>
-                                    <span class="role-period">Independent Projects • 2024 – Present</span>
-                                </div>
-                                <div class="role-sub">Independent Creative Work & Client Projects</div>
-
-                                <ul class="experience-list">
-                                    <li>Designed brand identities, logos, and visual systems for businesses and personal
-                                        brands.</li>
-                                    <li>Created responsive website and mobile UI concepts focused on usability and
-                                        modern aesthetics.</li>
-                                    <li>Delivered print and digital assets, including posters, social media creatives,
-                                        and marketing materials.</li>
-                                    <li>Collaborated with clients from concept development to final production, ensuring
-                                        consistent and impactful design.</li>
-                                </ul>
-
-                                <div class="timeline-tags">
-                                    <span>Brand Identity</span>
-                                    <span>Logo Design</span>
-                                    <span>UI/UX</span>
-                                    <span>Print Design</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Timeline Item: Self-Taught Designer Milestone -->
-                        <div class="timeline-card hover-tilt reveal-item">
-                            <div class="timeline-badge">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="timeline-meta">
-                                    <span class="role-title">Self-Taught Designer</span>
-                                    <span class="role-period">Continuous Learning</span>
-                                </div>
-                                <div class="role-sub">Continuous Learning • Personal Projects</div>
-
-                                <ul class="experience-list">
-                                    <li>Built a strong foundation in branding, typography, color theory, and user
-                                        interface design through self-directed learning.</li>
-                                    <li>Mastered industry-standard tools including Adobe Illustrator, Photoshop, Figma,
-                                        HTML, CSS, and JavaScript.</li>
-                                    <li>Continuously improve through personal projects, design challenges, and
-                                        exploration of modern design trends.</li>
-                                </ul>
-                                <div class="timeline-tags">
-                                    <span>Self Learning</span>
-                                    <span>Creative Growth</span>
-                                    <span>Problem Solving</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- 7. Contact Section -->
-            <section class="contact-section" id="contact">
-                <div class="container">
-                    <div class="contact-card-wrapper reveal-item">
-                        <div class="section-tag-row">
-                            <span class="section-num">06.</span>
-                            <span class="section-tag">[ CONTACT ]</span>
-                        </div>
-
-                        <h2 class="contact-title">LET'S CREATE SOMETHING <i>REMARKABLE</i></h2>
-                        <p class="contact-subtitle">Whether you're building a new brand, designing a digital product, or
-                            looking for a creative collaborator, I'd love to hear about your project.</p>
-
-                        <!-- Email One-Click Copy Badge -->
-                        <div class="email-copy-container">
-                            <div class="email-copy-box magnetic" id="copy-email-btn" data-cursor-text="COPY">
-                                <i class="fa-regular fa-envelope email-icon"></i>
-                                <span class="email-address-text" id="email-address">mhd.anwrofcl@gmail.com</span>
-                                <button class="copy-pill">
-                                    <i class="fa-regular fa-copy"></i>
-                                    <span id="copy-pill-text">COPY EMAIL</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Direct Social Links -->
-                        <div class="socials-row">
-                            <a href="mailto:mhd.anwrofcl@gmail.com" class="social-chip magnetic"
-                                data-cursor-text="EMAIL">
-                                <i class="fa-solid fa-envelope"></i> Email
-                            </a>
-                            <a href="https://www.linkedin.com/in/anwar-undefined-1aa183340/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BSaPw5ZY7SqaOsLoi2MSDAQ%3D%3D"
-                                target="_blank" rel="noopener" class="social-chip magnetic" data-cursor-text="LINKEDIN">
-                                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-                            </a>
-                            <a href="https://www.behance.net/mhd_awr" target="_blank" rel="noopener"
-                                class="social-chip magnetic" data-cursor-text="BEHANCE">
-                                <i class="fa-brands fa-behance"></i> Behance
-                            </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-chip magnetic"
-                                data-cursor-text="INSTAGRAM">
-                                <i class="fa-brands fa-instagram"></i> Instagram
-                            </a>
-                            <a href="https://wa.me/918089737635" target="_blank" rel="noopener"
-                                class="social-chip magnetic" data-cursor-text="WHATSAPP">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                            </a>
-                        </div>
-
-                        <!-- Contact Form -->
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="form-name">Full Name</label>
-                                    <input type="text" id="form-name" placeholder="Your Full Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-email">Email Address</label>
-                                    <input type="email" id="form-email" placeholder="your@email.com" required>
-                                </div>
-                            </div>
-                            <div class=" form-group">
-                                <label for="form-message">Project Details</label>
-                                <textarea id="form-message" rows="4"
-                                    placeholder="Share your project idea, goals, timeline, and let's create something remarkable together."
-                                    required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-submit magnetic" data-cursor-text="SEND">
-                                <span>Let's Talk</span>
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Footer -->
-                    <footer class="site-footer">
-                        <div class="footer-left">
-                            © 2026 MUHAMMED ANWAR — GRAPHIC DESIGNER & UI/UX DESIGNER
-                        </div>
-                        <div class="footer-right">
-                            <a href="#hero" class="back-to-top magnetic" data-cursor-text="TOP">
-                                <span>BACK TO TOP</span>
-                                <i class="fa-solid fa-arrow-up"></i>
-                            </a>
-                        </div>
-                    </footer>
-                </div>
-            </section>
+            </footer>
 
         </div>
     </main>
