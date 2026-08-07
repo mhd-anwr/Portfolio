@@ -245,6 +245,27 @@ document.addEventListener("DOMContentLoaded", () => {
                         ease: "power2.out"
                     });
                 }
+        }
+
+        // --------------------------------------------------
+        // 2. HERO IMAGE SCALE (LOAD & SCROLLTRIGGER PARALLAX)
+        // --------------------------------------------------
+        if (document.querySelector(".hero-image")) {
+            gsap.from(".hero-image", {
+                scale: 1.25,
+                opacity: 0,
+                duration: 2,
+                ease: "power4.out"
+            });
+
+            gsap.to(".hero-image", {
+                scale: 1,
+                scrollTrigger: {
+                    trigger: "#hero",
+                    scrub: true,
+                    start: "top top",
+                    end: "bottom top"
+                }
             });
         }
 
