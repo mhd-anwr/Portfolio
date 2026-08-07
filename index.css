@@ -112,29 +112,147 @@ img {
     padding: 0 2.5rem;
 }
 
-/* Ambient Lime Aura Background Glows */
-.ambient-glow {
+/* Animated Ambient Background Layer */
+.bg-ambient-layer {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
+}
+
+.ambient-glow {
+    position: absolute;
+    pointer-events: none;
     border-radius: 50%;
     filter: blur(140px);
+    will-change: transform, opacity;
 }
 
 .glow-lime-hero {
-    top: -10%;
-    left: -5%;
-    width: 650px;
-    height: 650px;
-    background: radial-gradient(circle, rgba(212, 255, 0, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -12%;
+    left: -8%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(212, 255, 0, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+    animation: floatGlowHero 18s ease-in-out infinite alternate;
 }
 
 .glow-lime-bento {
-    bottom: 10%;
-    right: -5%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(212, 255, 0, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+    bottom: -10%;
+    right: -8%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(212, 255, 0, 0.20) 0%, rgba(255, 255, 255, 0) 70%);
+    animation: floatGlowBento 22s ease-in-out infinite alternate;
+}
+
+.glow-lime-center {
+    top: 45%;
+    left: 35%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 255, 0, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    animation: floatGlowCenter 25s ease-in-out infinite alternate;
+}
+
+/* Subtle Interactive Dot Matrix Overlay */
+.bg-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(9, 10, 12, 0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.85;
+    animation: gridDrift 60s linear infinite;
+}
+
+/* Floating Geometric Accent Elements */
+.bg-floating-accent {
+    position: absolute;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: rgba(9, 10, 12, 0.08);
+    user-select: none;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.mark-1 {
+    top: 18%;
+    left: 8%;
+    font-size: 1.8rem;
+    animation: rotateMark 20s linear infinite, floatMark 12s ease-in-out infinite alternate;
+}
+
+.mark-2 {
+    top: 65%;
+    left: 92%;
+    font-size: 1.6rem;
+    animation: rotateMarkRev 24s linear infinite, floatMark 16s ease-in-out infinite alternate;
+}
+
+.mark-3 {
+    top: 82%;
+    left: 12%;
+    font-size: 1.2rem;
+    animation: pulseMark 8s ease-in-out infinite alternate;
+}
+
+.mark-4 {
+    top: 32%;
+    left: 88%;
+    font-size: 1.5rem;
+    animation: floatMark 14s ease-in-out infinite alternate;
+}
+
+/* Background Keyframe Animations */
+@keyframes floatGlowHero {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+    50% { transform: translate(60px, 40px) scale(1.1); opacity: 1; }
+    100% { transform: translate(-30px, 80px) scale(0.95); opacity: 0.75; }
+}
+
+@keyframes floatGlowBento {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    50% { transform: translate(-70px, -50px) scale(1.15); opacity: 1; }
+    100% { transform: translate(40px, -80px) scale(0.9); opacity: 0.7; }
+}
+
+@keyframes floatGlowCenter {
+    0% { transform: translate(0, 0) scale(0.9); opacity: 0.6; }
+    50% { transform: translate(50px, -60px) scale(1.2); opacity: 0.9; }
+    100% { transform: translate(-60px, 40px) scale(0.95); opacity: 0.5; }
+}
+
+@keyframes gridDrift {
+    0% { background-position: 0 0; }
+    100% { background-position: 64px 64px; }
+}
+
+@keyframes rotateMark {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateMarkRev {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes floatMark {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-25px); }
+}
+
+@keyframes pulseMark {
+    0% { opacity: 0.05; transform: scale(1); }
+    100% { opacity: 0.15; transform: scale(1.3); }
 }
 
 /* Custom Dual-Ring Cursor */

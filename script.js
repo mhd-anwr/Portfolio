@@ -58,6 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let ringX = mouseX;
         let ringY = mouseY;
 
+        const orb1 = document.getElementById("bg-orb-1");
+        const orb2 = document.getElementById("bg-orb-2");
+        const orb3 = document.getElementById("bg-orb-3");
+
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
@@ -68,6 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 duration: 0.1,
                 ease: "power1.out"
             });
+
+            // Gentle Parallax Shift for Background Ambient Glow Orbs
+            const moveX = (mouseX - window.innerWidth / 2) * 0.035;
+            const moveY = (mouseY - window.innerHeight / 2) * 0.035;
+
+            if (orb1) gsap.to(orb1, { x: moveX * 1.2, y: moveY * 1.2, duration: 2.2, ease: "power1.out" });
+            if (orb2) gsap.to(orb2, { x: -moveX * 0.9, y: -moveY * 0.9, duration: 2.8, ease: "power1.out" });
+            if (orb3) gsap.to(orb3, { x: moveX * 0.6, y: -moveY * 0.6, duration: 3.2, ease: "power1.out" });
         });
 
         gsap.ticker.add(() => {
