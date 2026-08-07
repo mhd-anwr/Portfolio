@@ -806,6 +806,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------
+    // 15. FAQ ACCORDION TOGGLES
+    // --------------------------------------------------
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach((item) => {
+        const btn = item.querySelector("button");
+        if (btn) {
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isOpen = item.classList.contains("active-faq");
+                faqItems.forEach((f) => {
+                    f.classList.remove("active-faq");
+                    const b = f.querySelector("button");
+                    if (b) {
+                        b.className = "btn-faq-gray";
+                        b.textContent = "Show +";
+                    }
+                });
+                if (!isOpen) {
+                    item.classList.add("active-faq");
+                    btn.className = "btn-faq-yellow";
+                    btn.textContent = "Hide -";
+                }
+            });
+        }
+    });
+
+    // --------------------------------------------------
+    // 16. PORTFOLIO FILTER TABS
+    // --------------------------------------------------
+    const filterTabs = document.querySelectorAll(".filter-tab-pill");
+    filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            filterTabs.forEach((t) => t.classList.remove("active-yellow"));
+            tab.classList.add("active-yellow");
+        });
+    });
+
+    // --------------------------------------------------
     // 15. DARK MODE & LIGHT MODE THEME SWITCHER
     // --------------------------------------------------
     const themeToggle = document.getElementById("theme-toggle");

@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammed Anwar — Graphic Designer & UI/UX Specialist</title>
     <meta name="description"
-        content="Personal portfolio of Muhammed Anwar, a self-taught Graphic Designer & UI/UX Specialist specializing in brand identity, logo design, UI/UX, and visual storytelling.">
+        content="Portfolio of Muhammed Anwar, Graphic Designer & UI/UX Specialist crafting high-impact digital experiences, brand identities, and visual products.">
 
-    <!-- Google Fonts: Bricolage Grotesque, Plus Jakarta Sans, Syne, Space Grotesk, Sora & Instrument Serif -->
+    <!-- Google Fonts: Bricolage Grotesque & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- 0. High-End Preloader Screen (0-100% Counter & Progress Bar) -->
+    <!-- 0. Preloader Screen -->
     <div class="preloader" id="preloader">
         <div class="loader-content">
             <div class="loader-logo">ANWAR.</div>
@@ -35,42 +35,36 @@
         </div>
     </div>
 
-    <!-- Clean Dynamic Canvas Background -->
+    <!-- Canvas Background & Grid Overlay -->
     <canvas id="bg-canvas"></canvas>
-
-    <!-- Ambient Glowing Light Orbs -->
-    <div class="bg-orb bg-orb-1" id="bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2" id="bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3" id="bg-orb-3"></div>
-
-    <!-- Subtle Dot Grid Matrix Overlay -->
     <div class="bg-grid-overlay"></div>
 
-    <!-- Custom Dual-Ring Cursor -->
+    <!-- Dual-Ring Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring">
         <span class="cursor-text" id="cursor-text"></span>
     </div>
 
-    <!-- Header / Navigation Bar -->
+    <!-- Navigation Header -->
     <header class="navbar" id="navbar">
-        <a href="#hero" class="nav-logo magnetic" data-cursor-text="HOME">
+        <a href="#hero" class="nav-logo magnetic">
             <span class="logo-mark">ANWAR.</span>
         </a>
 
         <nav class="nav-menu" id="nav-menu">
-            <a href="#works" class="nav-link magnetic">Selected Works</a>
-            <a href="#skills" class="nav-link magnetic">Tools & expertise</a>
-            <a href="#resume" class="nav-link magnetic">Experience & Education</a>
-            <a href="#contact" class="nav-link magnetic">Let's connect</a>
+            <a href="#hero" class="nav-link active">HOME</a>
+            <a href="#about" class="nav-link">ABOUT US</a>
+            <a href="#growth" class="nav-link">GROWTH</a>
+            <a href="#works" class="nav-link">PORTFOLIO</a>
+            <a href="#services" class="nav-link">SERVICES</a>
         </nav>
 
         <div class="nav-actions">
-            <button class="theme-toggle magnetic" id="theme-toggle" aria-label="Toggle Theme">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                 <i class="fa-solid fa-sun"></i>
             </button>
-            <a href="#contact" class="btn-primary magnetic" data-cursor-text="TALK">
-                <span>GET IN TOUCH</span>
+            <a href="#contact" class="btn-primary-yellow magnetic">
+                <span>LET'S TALK</span>
                 <i class="fa-solid fa-arrow-up-right"></i>
             </a>
             <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
@@ -83,373 +77,461 @@
     <main id="smooth-wrapper">
         <div id="smooth-content">
 
-            <!-- 1. Hero Section (arrowsdesign.me 1-to-1 exact match) -->
-            <section class="arrows-hero" id="hero">
+            <!-- 1. HERO SECTION -->
+            <section class="fawell-hero" id="hero">
                 <div class="container">
-                    <div class="arrows-hero-grid">
-                        <div class="hero-text-col">
-                            <div class="hero-eyebrow reveal-item">
-                                <span class="tag-pill">[ GRAPHIC DESIGNER & UI/UX ]</span>
+                    <div class="hero-top-tag">
+                        <span class="pill-mini">[ Hi, Available For Design Projects ]</span>
+                        <span class="starburst-icon">✦</span>
+                    </div>
+
+                    <div class="hero-main-title-wrap">
+                        <h1 class="hero-giant-title">
+                            WORK WITH<br>
+                            PURPOSE, WITH<br>
+                            PASSION
+                        </h1>
+
+                        <!-- Floating Sticker Badges -->
+                        <div class="badge-uiux-yellow">
+                            <img src="assets/images/anwar_profile.jpg" alt="Muhammed Anwar" class="badge-avatar">
+                            <div>
+                                <span class="badge-txt">UI/UX Designer</span>
+                                <span class="badge-sub">Expert Level</span>
                             </div>
+                        </div>
 
-                            <h1 class="arrows-title reveal-item">
-                                Hi, I'm a <span class="green-text">.<span class="typing-rotate-text" id="typing-text">Designer</span></span>
-                            </h1>
+                        <div class="polaroid-card polaroid-1">
+                            <img src="assets/images/tea_cafe.png" alt="Creative Project">
+                        </div>
 
-                            <p class="arrows-sub reveal-item">
-                                Designer + Creator — Crafting Minimal, Meaningful Designs
+                        <div class="polaroid-card polaroid-2">
+                            <img src="assets/images/anwar_profile.jpg" alt="Muhammed Anwar">
+                        </div>
+
+                        <span class="starburst-gold star-1">✦</span>
+                        <span class="starburst-white star-2">✦</span>
+                        <span class="starburst-white star-3">✦</span>
+                    </div>
+
+                    <!-- Email Input Bar -->
+                    <div class="hero-email-box">
+                        <input type="email" placeholder="Enter email address..." id="hero-email-input">
+                        <button class="btn-subscribe-black" id="hero-subscribe-btn">Submit</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. IDEA TO EXECUTION SECTION -->
+            <section class="fawell-section" id="about">
+                <div class="container">
+                    <div class="idea-grid">
+                        <div class="idea-left">
+                            <h2 class="idea-title">
+                                From Idea To Execution, I Help You Realize The Dream With Design That's
+                                <span class="starburst-gold">✦</span>
+                            </h2>
+                        </div>
+                        <div class="idea-right">
+                            <p class="idea-desc">
+                                As a passionate, self-taught Graphic & UI/UX Designer, I focus on crafting meaningful, human-centered digital experiences that help brands articulate who they are and where they are going.
                             </p>
-
-                            <div class="arrows-exp-badge reveal-item">
-                                <span class="exp-number">3</span>
-                                <span class="exp-text">Years of experience</span>
-                            </div>
-
-                            <div class="arrows-intro-block reveal-item">
-                                <h2 class="intro-heading">Hello, I am <span class="green-name">Muhammed Anwar</span></h2>
-                                <blockquote class="intro-quote">
-                                    "Design is not just what it looks like, it's how it works."
-                                    <cite>— Steve Jobs</cite>
-                                </blockquote>
-                            </div>
-
-                            <div class="hero-actions reveal-item">
-                                <a href="#works" class="btn-arrows-primary magnetic">
-                                    <span>Explore Projects</span>
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                </a>
-                                <button class="btn-arrows-secondary magnetic" id="hero-resume-btn">
-                                    <span>Download CV</span>
-                                    <i class="fa-solid fa-download"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Designer Portrait Frame -->
-                        <div class="hero-portrait-col reveal-item">
-                            <div class="portrait-card-wrapper">
-                                <div class="portrait-img-holder">
-                                    <img src="assets/images/anwar_profile.jpg" alt="Muhammed Anwar — Graphic Designer & UI/UX Specialist">
-                                    <div class="portrait-badge">
-                                        <span class="status-dot"></span> Available for Projects
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="idea-subdesc">
+                                Good design doesn't need to shout; it speaks clearly with structure, strategy, and emotion.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- 2. Selected Works Section (arrowsdesign.me 1-to-1) -->
-            <section class="arrows-section" id="works">
-                <div class="container">
-                    <div class="arrows-sec-head reveal-item">
-                        <h2 class="arrows-sec-title">Selected Works</h2>
-                        <p class="arrows-sec-desc">A showcased selection of projects that demonstrate my passion for creating intuitive and impactful digital experiences.</p>
-                    </div>
-
-                    <div class="arrows-projects-grid">
-                        <!-- Project Card 1: Graphic Design -->
-                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="tea_cafe">
-                            <div class="project-img-holder">
-                                <img src="assets/images/tea_cafe.png" alt="Graphic Design">
-                                <span class="project-tag-pill">Graphic Design</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Custom & Unique Identity</h3>
-                                <p class="project-subtitle">Tea Café Branding & Visual Systems</p>
-                            </div>
-                        </article>
-
-                        <!-- Project Card 2: Web Design -->
-                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="logos">
-                            <div class="project-img-holder">
-                                <img src="assets/images/logo_collection.jpg" alt="Web Design">
-                                <span class="project-tag-pill">Web Design</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Web Development</h3>
-                                <p class="project-subtitle">Minimal Logos & Web Interfaces</p>
-                            </div>
-                        </article>
-
-                        <!-- Project Card 3: UI/UX Design -->
-                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="social">
-                            <div class="project-img-holder">
-                                <img src="assets/images/social_media.jpg" alt="UI/UX Design">
-                                <span class="project-tag-pill">UI/UX Design</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Product Digital Design</h3>
-                                <p class="project-subtitle">Social Media & App Visuals</p>
-                            </div>
-                        </article>
-
-                        <!-- Project Card 4: Video Edit -->
-                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="posters">
-                            <div class="project-img-holder">
-                                <img src="assets/images/posters.jpg" alt="Video Edit">
-                                <span class="project-tag-pill">Video Edit</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Video Graphic Editing</h3>
-                                <p class="project-subtitle">Creative Posters & Motion Graphics</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. Tools & Expertise Section (arrowsdesign.me 1-to-1) -->
-            <section class="arrows-section" id="skills">
-                <div class="container">
-                    <div class="arrows-sec-head reveal-item">
-                        <h2 class="arrows-sec-title">Tools & expertise</h2>
-                    </div>
-
-                    <div class="arrows-tools-grid">
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-layer-group"></i></div>
-                            <h3 class="tool-name">Adobe Creative Suite</h3>
-                            <p class="tool-sub">Photoshop, Illustrator & more</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-brands fa-figma"></i></div>
-                            <h3 class="tool-name">UI/UX Design</h3>
-                            <p class="tool-sub">WordPress, Figma</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
-                            <h3 class="tool-name">Graphic Design</h3>
-                            <p class="tool-sub">Photoshop, Illustrator</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-pen-nib"></i></div>
-                            <h3 class="tool-name">Illustration</h3>
-                            <p class="tool-sub">Custom graphics</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
-                            <h3 class="tool-name">Web Design</h3>
-                            <p class="tool-sub">HTML / CSS / JavaScript</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-bezier-curve"></i></div>
-                            <h3 class="tool-name">Design Systems</h3>
-                            <p class="tool-sub">Reference & Guidelines</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                            <h3 class="tool-name">AI Tools</h3>
-                            <p class="tool-sub">Latest AI Models</p>
-                        </div>
-
-                        <div class="arrows-tool-card reveal-item">
-                            <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
-                            <h3 class="tool-name">Video Editing</h3>
-                            <p class="tool-sub">Premiere Pro, After Effects, DaVinci Resolve</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. Experience & Education Section (arrowsdesign.me 1-to-1) -->
-            <section class="arrows-section" id="resume">
-                <div class="container">
-                    <div class="resume-header-row reveal-item">
-                        <h2 class="arrows-sec-title">Experience & Education</h2>
-                        <button class="btn-download-cv magnetic" id="resume-download-btn-sec"><i class="fa-solid fa-download"></i> Download CV</button>
-                    </div>
-
-                    <div class="arrows-exp-grid">
-                        <!-- Work Experience Column -->
-                        <div class="exp-col reveal-item">
-                            <h3 class="col-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">Web Designer</span>
-                                <span class="exp-company">Independent Practice</span>
-                                <p class="exp-desc">Crafted high-conversion digital experiences for clients, focusing on user accessibility and intuitive UI.</p>
-                            </div>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">Graphic Designer</span>
-                                <span class="exp-company">Creative Collaborations</span>
-                                <p class="exp-desc">Leading design for core product features and brand assets.</p>
-                            </div>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">Freelance</span>
-                                <span class="exp-company">Independent Work</span>
-                                <p class="exp-desc">Started My Design career creating brand identities, logos, and social media visuals.</p>
+                    <!-- 3 Feature Cards Row -->
+                    <div class="idea-cards-row">
+                        <div class="feature-card">
+                            <span class="feat-tag">Grid & Branding</span>
+                            <h3 class="feat-title">Clean Grid Design Structure</h3>
+                            <div class="feat-preview-box box-grid">
+                                <i class="fa-solid fa-layer-group"></i>
                             </div>
                         </div>
 
-                        <!-- Education Column -->
-                        <div class="exp-col reveal-item">
-                            <h3 class="col-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">Bachelor in Computer Applications</span>
-                                <span class="exp-company">Calicut University</span>
-                                <p class="exp-desc">Pursuing degree in technology, web design, and software fundamentals.</p>
-                            </div>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">Commerce / Higher Secondary</span>
-                                <span class="exp-company">Kerala State Board of Higher Secondary Education</span>
-                                <p class="exp-desc">Completed higher secondary education with strong analytical skills.</p>
-                            </div>
-
-                            <div class="exp-item-card">
-                                <span class="exp-role">SSLC</span>
-                                <span class="exp-company">Kerala State Board of General Education</span>
-                                <p class="exp-desc">Completed secondary school education with distinction.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. Let's Connect Section (arrowsdesign.me 1-to-1) -->
-            <section class="arrows-section" id="contact">
-                <div class="container">
-                    <div class="arrows-sec-head reveal-item">
-                        <h2 class="arrows-sec-title">Let's Connect</h2>
-                        <p class="arrows-sec-desc">Have a project in mind? I'd love to hear about it.</p>
-                    </div>
-
-                    <div class="connect-wrapper">
-                        <div class="connect-info-col reveal-item">
-                            <h3>Get in Touch</h3>
-                            <p class="connect-intro-text">Whether you have a question, want to discuss a project, or just want to say hi, I'll try my best to get back to you as soon as possible!</p>
-
-                            <div class="connect-info-list">
-                                <a href="mailto:mhd.anwrofcl@gmail.com" class="connect-info-card">
-                                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-                                    <div>
-                                        <span class="card-label">Email</span>
-                                        <span class="card-val">mhd.anwrofcl@gmail.com</span>
-                                    </div>
-                                </a>
-
-                                <a href="https://wa.me/918089737635" class="connect-info-card" target="_blank">
-                                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
-                                    <div>
-                                        <span class="card-label">Phone / WhatsApp</span>
-                                        <span class="card-val">+91 8089737635</span>
-                                    </div>
-                                </a>
-
-                                <div class="connect-info-card">
-                                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-                                    <div>
-                                        <span class="card-label">Location</span>
-                                        <span class="card-val">Malappuram, Kerala</span>
-                                    </div>
+                        <div class="feature-card">
+                            <span class="feat-tag">My Work</span>
+                            <h3 class="feat-title">75+ Featured Projects</h3>
+                            <div class="feat-preview-box box-portfolio">
+                                <div class="mini-stack-imgs">
+                                    <img src="assets/images/tea_cafe.png" alt="Work 1">
+                                    <img src="assets/images/logo_collection.jpg" alt="Work 2">
+                                    <img src="assets/images/social_media.jpg" alt="Work 3">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="connect-form-col reveal-item">
-                            <form id="contact-form" class="arrows-form">
+                        <div class="feature-card card-discovery">
+                            <span class="feat-tag">Next Step</span>
+                            <h3 class="feat-title">01 Discovery Call</h3>
+                            <p class="feat-desc">Understand project scope, user experience, research, and timeline.</p>
+                            <div class="call-action-pills">
+                                <button class="btn-yellow-pill">Book 15</button>
+                                <span class="pill-dark">Day 01</span>
+                                <span class="pill-dark">Day 02</span>
+                                <span class="pill-dark">Day 03</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CREATIVE GROWTH TIMELINE LIST -->
+            <section class="fawell-section" id="growth">
+                <div class="container">
+                    <div class="sec-header-center">
+                        <span class="sec-eyebrow">A Yearly Snapshot Of My Creative Growth</span>
+                        <p class="sec-subtitle">Focusing on designing a clear user interface and building seamless digital experiences.</p>
+                    </div>
+
+                    <div class="snapshot-list">
+                        <!-- Item 1 -->
+                        <div class="snapshot-item">
+                            <div class="snap-num">01</div>
+                            <div class="snap-date">2024 - Present</div>
+                            <div class="snap-role">
+                                <strong>UI/UX & Graphic Designer</strong>
+                                <span>Freelance & Independent Practice</span>
+                            </div>
+                            <div class="snap-location">
+                                <span class="flag-icon">🇮🇳</span> India, Remote
+                            </div>
+                            <div class="snap-type">Fulltime / Contract</div>
+                            <button class="btn-snap-toggle">Show +</button>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="snapshot-item">
+                            <div class="snap-num">02</div>
+                            <div class="snap-date">2023 - 2024</div>
+                            <div class="snap-role">
+                                <strong>Brand Identity Specialist</strong>
+                                <span>Digital Client Studios</span>
+                            </div>
+                            <div class="snap-location">
+                                <span class="flag-icon">🇩🇪</span> International Clients
+                            </div>
+                            <div class="snap-type">Contract</div>
+                            <button class="btn-snap-toggle">Show +</button>
+                        </div>
+
+                        <!-- Item 3 (Active Expanded Card) -->
+                        <div class="snapshot-item expanded active-yellow-item">
+                            <div class="snap-top-row">
+                                <div class="snap-num">03</div>
+                                <div class="snap-date">2023 - 2026</div>
+                                <div class="snap-role">
+                                    <strong>Bachelor in Computer Applications</strong>
+                                    <span>Calicut University</span>
+                                </div>
+                                <div class="snap-location">
+                                    <span class="flag-icon">🎓</span> University Student
+                                </div>
+                                <div class="snap-type">Degree Program</div>
+                                <button class="btn-yellow-active">Hide -</button>
+                            </div>
+                            <div class="snap-expanded-body">
+                                <div class="snap-col-left">
+                                    <span class="snap-label">Skill Mastery</span>
+                                    <div class="snap-progress-bar">
+                                        <div class="progress-fill" style="width: 92%;"></div>
+                                    </div>
+                                </div>
+                                <div class="snap-col-right">
+                                    <p>Comprehensive computer science degree paired with intensive self-taught visual design, wireframing, and user interface prototyping.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="snapshot-item">
+                            <div class="snap-num">04</div>
+                            <div class="snap-date">2021 - 2023</div>
+                            <div class="snap-role">
+                                <strong>Higher Secondary Education</strong>
+                                <span>Computer Science Stream</span>
+                            </div>
+                            <div class="snap-location">
+                                <span class="flag-icon">🇮🇳</span> Kerala Board
+                            </div>
+                            <div class="snap-type">Education</div>
+                            <button class="btn-snap-toggle">Show +</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. PORTFOLIO OF CREATIVE SOLUTIONS -->
+            <section class="fawell-section" id="works">
+                <div class="container">
+                    <div class="sec-header-center">
+                        <h2 class="sec-title-large">Explore My Expert Portfolio Of Creative Solutions</h2>
+                        <p class="sec-subtitle">Focusing on designing a clear user interface using modern visual tools.</p>
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="portfolio-filter-row">
+                        <button class="filter-tab-pill">General Artwork</button>
+                        <button class="filter-tab-pill active-yellow">UI/UX Design</button>
+                        <button class="filter-tab-pill">Web Design</button>
+                        <button class="filter-tab-pill">Posters & Covers</button>
+                    </div>
+
+                    <!-- Project Grid -->
+                    <div class="solutions-project-grid">
+                        <!-- Card 1 -->
+                        <article class="sol-card project-card-trigger" data-project="tea_cafe">
+                            <div class="sol-img-holder">
+                                <img src="assets/images/tea_cafe.png" alt="Tea Café Branding">
+                                <span class="sol-tag">Graphic Design</span>
+                            </div>
+                            <div class="sol-info">
+                                <h3>Tea Café — Brand Package</h3>
+                                <div class="sol-pill-tags">
+                                    <span>Branding</span>
+                                    <span>Identity</span>
+                                </div>
+                                <p>Comprehensive brand identity, logo suite, packaging, and digital menu visuals.</p>
+                                <div class="sol-btn-row">
+                                    <button class="btn-sol-action">View Case Study</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Card 2 (Featured Yellow CTA) -->
+                        <article class="sol-card featured-sol-card project-card-trigger" data-project="mobile_app">
+                            <div class="sol-img-holder">
+                                <img src="assets/images/social_media.jpg" alt="Digital Media">
+                                <span class="sol-tag tag-black">UI/UX & Mobile</span>
+                            </div>
+                            <div class="sol-info">
+                                <h3>Digital Product Design</h3>
+                                <div class="sol-pill-tags">
+                                    <span>Figma</span>
+                                    <span>UI/UX</span>
+                                </div>
+                                <p>High-conversion social media assets, mobile interface flows, and interactive prototypes.</p>
+                                <div class="sol-btn-row">
+                                    <button class="btn-yellow-cta">View Project</button>
+                                    <button class="btn-black-cta">Details</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Card 3 -->
+                        <article class="sol-card project-card-trigger" data-project="logos">
+                            <div class="sol-img-holder">
+                                <img src="assets/images/logo_collection.jpg" alt="Logo Collection">
+                                <span class="sol-tag">Web Design</span>
+                            </div>
+                            <div class="sol-info">
+                                <h3>Minimal Logo Suite</h3>
+                                <div class="sol-pill-tags">
+                                    <span>Logos</span>
+                                    <span>Vector</span>
+                                </div>
+                                <p>Minimalist vector logo marks and web landing page interfaces created for clients.</p>
+                                <div class="sol-btn-row">
+                                    <button class="btn-sol-action">View Case Study</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. WHAT I CAN DO SECTION -->
+            <section class="fawell-section" id="services">
+                <div class="container">
+                    <div class="services-header-grid">
+                        <div class="serv-head-left">
+                            <h2 class="serv-title">Here's What I Can Do To Help You Bring Your Vision To Life—Simple</h2>
+                            <p class="serv-desc">Intuitive creative services designed to elevate your brand & business identity.</p>
+                        </div>
+                    </div>
+
+                    <div class="services-4-grid">
+                        <!-- Card 1 -->
+                        <div class="service-box">
+                            <h3 class="serv-name">Web Design</h3>
+                            <p class="serv-text">Crafting slick, responsive interfaces and modern landing pages focused on usability.</p>
+                            <span class="serv-arrow">↗</span>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="service-box">
+                            <h3 class="serv-name">UI/UX Design</h3>
+                            <p class="serv-text">Designing user-centered product flows, Figma wireframes, and design systems.</p>
+                            <span class="serv-arrow">↗</span>
+                        </div>
+
+                        <!-- Card 3 (Yellow Highlight Card) -->
+                        <div class="service-box featured-yellow-box">
+                            <h3 class="serv-name">Print & Development</h3>
+                            <p class="serv-text">High-impact typographic posters, marketing collaterals, and front-end execution.</p>
+                            <div class="arrow-circle-black">↗</div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="service-box">
+                            <h3 class="serv-name">Branding & Visual Identity</h3>
+                            <p class="serv-text">Creating memorable brand marks, logo collections, and full visual brand guidelines.</p>
+                            <span class="serv-arrow">↗</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. FAQ ACCORDION SECTION -->
+            <section class="fawell-section" id="faq">
+                <div class="container">
+                    <div class="sec-header-center">
+                        <h2 class="sec-title-large">Got Questions? We've Got Answers.</h2>
+                        <p class="sec-subtitle">Everything you need to know about my design services — fast, simple and transparent.</p>
+                    </div>
+
+                    <div class="faq-accordion-list">
+                        <!-- FAQ 1 (Active Yellow Expanded) -->
+                        <div class="faq-item active-faq">
+                            <div class="faq-question">
+                                <h3>What types of design projects do you handle?</h3>
+                                <button class="btn-faq-yellow">Hide -</button>
+                            </div>
+                            <div class="faq-answer">
+                                <p>I specialize in brand identity design, minimalist logo suites, UI/UX mobile & web interfaces, social media campaign graphics, typographic poster design, and front-end web development.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How fast can you deliver a project?</h3>
+                                <button class="btn-faq-gray">Show +</button>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Standard logo and branding packages take 3 to 7 business days. Full UI/UX web designs typically take 1 to 2 weeks depending on scope.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Can I track my project progress in real time?</h3>
+                                <button class="btn-faq-gray">Show +</button>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes! I provide live Figma links, regular milestone updates over WhatsApp/Email, and interactive preview links.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Do you offer ongoing design support?</h3>
+                                <button class="btn-faq-gray">Show +</button>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Absolutley. I offer ongoing retainer design support for growing startups and long-term client collaborations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. CONTACT & STATS FOOTER SECTION -->
+            <section class="fawell-section section-contact-world" id="contact">
+                <div class="container">
+                    <!-- Stats Counter Row -->
+                    <div class="stats-counter-row">
+                        <div class="stat-col">
+                            <span class="stat-big-num">+320</span>
+                            <span class="stat-lbl">Completed Creative Projects</span>
+                        </div>
+                        <div class="stat-col">
+                            <span class="stat-big-num">3+ Years</span>
+                            <span class="stat-lbl">Experience In Design Sector</span>
+                        </div>
+                        <div class="stat-col">
+                            <span class="stat-big-num">+20</span>
+                            <span class="stat-lbl">Outstanding Client Recognitions</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Box -->
+                    <div class="connect-main-grid">
+                        <div class="connect-left">
+                            <h2 class="connect-giant-head">Our Idea, My Design — Let's Connect.</h2>
+                            <p class="connect-subtext">Focusing on designing a clear user interface & elevating your brand identity.</p>
+
+                            <div class="connect-direct-info">
+                                <p><i class="fa-solid fa-envelope"></i> mhd.anwrofcl@gmail.com</p>
+                                <p><i class="fa-solid fa-phone"></i> +91 8089737635</p>
+                                <p><i class="fa-solid fa-location-dot"></i> Malappuram, Kerala</p>
+                            </div>
+                        </div>
+
+                        <div class="connect-right">
+                            <form id="contact-form" class="fawell-contact-form">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                    <input type="text" id="name" name="name" placeholder="Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                    <input type="email" id="email" name="email" placeholder="Email Address" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                                    <textarea id="message" name="message" rows="4" placeholder="Work Description" required></textarea>
                                 </div>
-                                <button type="submit" class="btn-submit-form" id="submit-btn">
-                                    <span>Send Message</span>
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                </button>
+                                <button type="submit" class="btn-submit-yellow" id="submit-btn">Submit</button>
                             </form>
                         </div>
                     </div>
+
+                    <!-- Footer Bottom -->
+                    <footer class="site-footer-fawell">
+                        <div class="foot-socials">
+                            <a href="https://github.com/mhd-anwr" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://linkedin.com/in/anwar-undefined-1aa183340" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://behance.net/mhd_awr" target="_blank"><i class="fa-brands fa-behance"></i></a>
+                        </div>
+
+                        <nav class="foot-nav">
+                            <a href="#hero">HOME</a>
+                            <a href="#about">ABOUT</a>
+                            <a href="#works">PORTFOLIO</a>
+                            <a href="#growth">GROWTH</a>
+                            <a href="#contact">CONTACT</a>
+                        </nav>
+
+                        <div class="foot-copy">
+                            © 2026 MUHAMMED ANWAR. ALL RIGHTS RESERVED.
+                        </div>
+                    </footer>
                 </div>
             </section>
-
-            <!-- Footer (arrowsdesign.me 1-to-1) -->
-            <footer class="site-footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <p>© 2026 MUHAMMED ANWAR. All rights reserved.</p>
-                        <div class="footer-socials">
-                            <a href="https://github.com/mhd-anwr" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="https://linkedin.com/in/anwar-undefined-1aa183340" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="https://behance.net/mhd_awr" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
-                            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
 
         </div>
     </main>
 
-    <!-- Project Lightbox Modal -->
+    <!-- Lightbox Modal -->
     <div class="modal-overlay" id="project-modal" aria-hidden="true">
         <div class="modal-container">
-            <button class="modal-close-btn magnetic" id="modal-close-btn" data-cursor-text="CLOSE">
+            <button class="modal-close-btn" id="modal-close-btn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
             <div class="modal-scroll-body">
                 <div class="modal-hero">
                     <span class="modal-category" id="modal-category">CATEGORY</span>
                     <h2 class="modal-title" id="modal-title">PROJECT TITLE</h2>
-                    <div class="modal-meta-grid">
-                        <div class="meta-box">
-                            <span class="meta-label">DESIGNER</span>
-                            <span class="meta-value">Muhammed Anwar</span>
-                        </div>
-                        <div class="meta-box">
-                            <span class="meta-label">DISCIPLINE</span>
-                            <span class="meta-value" id="modal-role">Graphic / UI/UX</span>
-                        </div>
-                        <div class="meta-box">
-                            <span class="meta-label">YEAR</span>
-                            <span class="meta-value">2026</span>
-                        </div>
-                        <div class="meta-box">
-                            <span class="meta-label">TOOLS</span>
-                            <span class="meta-value" id="modal-tools">Figma & Adobe CC</span>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="modal-image-box">
                     <img src="" alt="Project Image" id="modal-image" class="modal-img">
                 </div>
-
                 <div class="modal-content-grid">
-                    <div class="modal-column">
-                        <h3 class="modal-subtitle">PROJECT OVERVIEW</h3>
-                        <p class="modal-text" id="modal-overview">Detailed overview text...</p>
-                    </div>
-
-                    <div class="modal-column">
-                        <h3 class="modal-subtitle">KEY DELIVERABLES</h3>
-                        <div class="modal-tags" id="modal-tech-stack"></div>
-
-                        <a href="#contact" class="btn-modal-action magnetic" id="modal-inquire-btn"
-                            data-cursor-text="CONTACT">
-                            <span>INQUIRE ABOUT THIS WORK</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+                    <p class="modal-text" id="modal-overview">Overview details...</p>
+                    <div class="modal-tags" id="modal-tech-stack"></div>
                 </div>
             </div>
         </div>
@@ -458,23 +540,18 @@
     <!-- Resume Modal -->
     <div class="modal-overlay" id="resume-modal" aria-hidden="true">
         <div class="modal-container resume-modal-container">
-            <button class="modal-close-btn magnetic" id="resume-close-btn" data-cursor-text="CLOSE">
+            <button class="modal-close-btn" id="resume-close-btn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="resume-paper">
                 <div class="resume-header">
                     <div class="resume-profile-row">
-                        <img src="assets/images/anwar_cv_profile.jpg" alt="Muhammed Anwar" class="resume-avatar">
+                        <img src="assets/images/anwar_profile.jpg" alt="Muhammed Anwar" class="resume-avatar">
                         <div>
                             <h1 class="resume-name">MUHAMMED ANWAR</h1>
                             <p class="resume-title">Graphic Designer & UI/UX Designer</p>
                         </div>
-                    </div>
-                    <div class="resume-contact-info">
-                        <p><i class="fa-solid fa-envelope"></i> mhd.anwrofcl@gmail.com</p>
-                        <p><i class="fa-brands fa-linkedin"></i> linkedin.com/in/anwar-undefined-1aa183340</p>
-                        <p><i class="fa-brands fa-behance"></i> behance.net/mhd_awr</p>
                     </div>
                 </div>
 
@@ -483,43 +560,12 @@
                 <div class="resume-section">
                     <h2 class="resume-sec-title">PROFILE SUMMARY</h2>
                     <p class="resume-text">
-                        Dedicated, self-taught Graphic Designer and UI/UX Designer passionate about crafting minimalist
-                        brand identities, modern logo collections, and intuitive digital interfaces. Proficient in
-                        Figma, Adobe Creative Cloud (Photoshop, Illustrator, Canva), and front-end web technologies
-                        (HTML, CSS, JavaScript).
+                        Dedicated, self-taught Graphic Designer and UI/UX Designer passionate about crafting minimalist brand identities, modern logo collections, and intuitive digital interfaces.
                     </p>
                 </div>
 
-                <div class="resume-section">
-                    <h2 class="resume-sec-title">CORE SKILLS & SOFTWARE</h2>
-                    <div class="resume-skills-grid">
-                        <span><strong>Design Stack:</strong> Photoshop, Illustrator, Figma, Canva</span>
-                        <span><strong>UI/UX:</strong> Wireframing, Prototyping, Design Systems, Mobile App UI</span>
-                        <span><strong>Frontend:</strong> HTML5, CSS3, JavaScript, GSAP Animations</span>
-                        <span><strong>Branding:</strong> Logo Design, Brand Guidelines, Visual Storytelling</span>
-                    </div>
-                </div>
-
-                <div class="resume-section">
-                    <h2 class="resume-sec-title">EXPERIENCE</h2>
-                    <div class="resume-job">
-                        <div class="job-header">
-                            <span class="job-role">Freelance Graphic Designer & UI/UX Specialist</span>
-                            <span class="job-date">2024 — Present</span>
-                        </div>
-                        <ul class="job-bullets">
-                            <li>Designed brand identity packages, logo marks, and visual guidelines for independent
-                                client projects.</li>
-                            <li>Created user interface concepts in Figma with emphasis on glassmorphism and clean
-                                editorial layout.</li>
-                            <li>Produced social media carousels, Swiss typographic posters, and digital campaign
-                                artwork.</li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="resume-actions">
-                    <button class="btn-download-pdf magnetic" id="download-cv-file-btn" data-cursor-text="DOWNLOAD">
+                    <button class="btn-download-pdf" id="download-cv-file-btn">
                         <i class="fa-solid fa-download"></i> SAVE RESUME (PDF)
                     </button>
                 </div>
@@ -527,20 +573,16 @@
         </div>
     </div>
 
-    <!-- Toast Notification Container -->
+    <!-- Toast Notifications -->
     <div class="toast-container" id="toast-container"></div>
 
-    <!-- GSAP & Lenis -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-
-    <!-- EmailJS, html2canvas & jsPDF -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-    <!-- Your Script -->
     <script src="script.js"></script>
 </body>
 
