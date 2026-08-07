@@ -348,8 +348,20 @@ emailjs.init("gz2f1kp7L-ae3kKgV");
         }
 
         // --------------------------------------------------
-        // 6. FLOATING SHAPES (.blob1 CONTINUOUS SLOW MOVEMENT)
+        // 10. STAGGER REVEAL (.hero > * ENTRANCE)
         // --------------------------------------------------
+        function initHeroAnimations() {
+            if (document.querySelector(".hero")) {
+                gsap.from(".hero > *", {
+                    opacity: 0,
+                    y: 60,
+                    stagger: 0.15,
+                    duration: 1.1,
+                    ease: "power4.out"
+                });
+            }
+        }
+        initHeroAnimations();
         if (document.querySelector(".blob1")) {
             gsap.to(".blob1", {
                 y: -40,
