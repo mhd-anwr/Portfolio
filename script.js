@@ -193,39 +193,55 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // --------------------------------------------------
-        // MOUSE-FOLLOWING AURORA GLOW IN HERO SECTION
+        // MOUSE-FOLLOWING AURORA GLOW (.hero-glow WITH EASING)
         // --------------------------------------------------
         const heroSection = document.getElementById("hero");
+        const heroGlow = document.getElementById("hero-glow");
         const orbYellow = document.getElementById("aurora-orb-yellow");
         const orbViolet = document.getElementById("aurora-orb-violet");
         const orbCyan = document.getElementById("aurora-orb-cyan");
 
-        if (heroSection && orbYellow && orbViolet && orbCyan) {
+        if (heroSection) {
             heroSection.addEventListener("mousemove", (e) => {
                 const rect = heroSection.getBoundingClientRect();
                 const relX = e.clientX - rect.left;
                 const relY = e.clientY - rect.top;
 
-                gsap.to(orbYellow, {
-                    x: (relX - rect.width / 2) * 0.35,
-                    y: (relY - rect.height / 2) * 0.35,
-                    duration: 1.2,
-                    ease: "power2.out"
-                });
+                if (heroGlow) {
+                    gsap.to(heroGlow, {
+                        left: relX,
+                        top: relY,
+                        duration: 0.6,
+                        ease: "power2.out"
+                    });
+                }
 
-                gsap.to(orbViolet, {
-                    x: (relX - rect.width / 2) * -0.25,
-                    y: (relY - rect.height / 2) * -0.25,
-                    duration: 1.6,
-                    ease: "power2.out"
-                });
+                if (orbYellow) {
+                    gsap.to(orbYellow, {
+                        x: (relX - rect.width / 2) * 0.35,
+                        y: (relY - rect.height / 2) * 0.35,
+                        duration: 1.2,
+                        ease: "power2.out"
+                    });
+                }
 
-                gsap.to(orbCyan, {
-                    x: (relX - rect.width / 2) * 0.15,
-                    y: (relY - rect.height / 2) * 0.15,
-                    duration: 2.0,
-                    ease: "power2.out"
-                });
+                if (orbViolet) {
+                    gsap.to(orbViolet, {
+                        x: (relX - rect.width / 2) * -0.25,
+                        y: (relY - rect.height / 2) * -0.25,
+                        duration: 1.6,
+                        ease: "power2.out"
+                    });
+                }
+
+                if (orbCyan) {
+                    gsap.to(orbCyan, {
+                        x: (relX - rect.width / 2) * 0.15,
+                        y: (relY - rect.height / 2) * 0.15,
+                        duration: 2.0,
+                        ease: "power2.out"
+                    });
+                }
             });
         }
 

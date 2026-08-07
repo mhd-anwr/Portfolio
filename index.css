@@ -2932,6 +2932,24 @@ img {
    MOUSE-FOLLOWING AURORA GLOW BACKGROUND STYLES
    ========================================================================== */
 
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    filter: blur(120px);
+    background: radial-gradient(circle,
+        rgba(215,255,0,.18) 0%,
+        rgba(215,255,0,.08) 40%,
+        transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    will-change: left, top;
+}
+
 .aurora-glow-wrap {
     position: absolute;
     top: 0;
