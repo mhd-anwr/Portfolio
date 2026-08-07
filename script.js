@@ -46,11 +46,81 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 25);
 
     // --------------------------------------------------
-    // 2. DUAL-RING CUSTOM CURSOR
+    // 2. DUAL-RING CUSTOM CURSOR & BG PARALLAX
     // --------------------------------------------------
     const cursorDot = document.getElementById("cursor-dot");
     const cursorRing = document.getElementById("cursor-ring");
     const cursorText = document.getElementById("cursor-text");
+
+    // --------------------------------------------------
+    // 2.5. INTERACTIVE BACKGROUND PARTICLE CANVAS
+    // --------------------------------------------------
+    const bgCanvas = document.getElementById("bg-canvas");
+    if (bgCanvas) {
+        const ctx = bgCanvas.getContext("2d");
+        let width = (bgCanvas.width = window.innerWidth);
+        let height = (bgCanvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+            width = bgCanvas.width = window.innerWidth;
+            height = bgCanvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = Math.min(Math.floor(window.innerWidth / 35), 45);
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                radius: Math.random() * 2 + 1.2,
+                alpha: Math.random() * 0.5 + 0.3
+            });
+        }
+
+        function animateBgParticles() {
+            ctx.clearRect(0, 0, width, height);
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const particleColor = isDark ? "212, 255, 0" : "9, 10, 12";
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${particleColor}, ${p.alpha * 0.45})`;
+                ctx.fill();
+
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(${particleColor}, ${0.15 * (1 - dist / 130)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animateBgParticles);
+        }
+
+        animateBgParticles();
+    }
 
     if (cursorDot && cursorRing) {
         let mouseX = window.innerWidth / 2;
