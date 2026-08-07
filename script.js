@@ -281,6 +281,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // --------------------------------------------------
+        // 4. CONTINUOUS SCALE (SUBTLE BREATHING HEADING)
+        // --------------------------------------------------
+        if (document.querySelector(".hero-title")) {
+            gsap.to(".hero-title", {
+                scale: 1.015,
+                repeat: -1,
+                yoyo: true,
+                duration: 3,
+                ease: "sine.inOut"
+            });
+        }
+
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;
