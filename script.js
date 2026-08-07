@@ -789,9 +789,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     const storedTheme = localStorage.getItem("portfolio-theme");
 
-    if (storedTheme === "dark") {
+    if (storedTheme !== "light") {
         document.documentElement.setAttribute("data-theme", "dark");
         if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+        document.documentElement.removeAttribute("data-theme");
+        if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
     }
 
     if (themeToggle) {
