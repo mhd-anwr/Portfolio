@@ -784,12 +784,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------
-    // 15. DARK MODE & LIGHT MODE THEME SWITCHER
+    // 15. DARK MODE & LIGHT MODE THEME SWITCHER (DEFAULT LIGHT MODE)
     // --------------------------------------------------
     const themeToggle = document.getElementById("theme-toggle");
     const storedTheme = localStorage.getItem("portfolio-theme");
 
-    if (storedTheme !== "light") {
+    if (storedTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
         if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
     } else {
