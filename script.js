@@ -817,15 +817,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------
-    // 16. HERO TEXT TYPING ROTATOR
+    // 16. HERO TEXT TYPING ROTATOR (ARROWSDESIGN.ME EXACT MATCH)
     // --------------------------------------------------
     const typingTextEl = document.getElementById("typing-text");
     if (typingTextEl) {
         const roles = [
-            "Graphic Design",
-            "UI/UX Design",
-            "Brand Identity",
-            "Visual Stories"
+            "Designer",
+            "Creator",
+            "Graphic Designer",
+            "UI/UX Specialist"
         ];
         let roleIndex = 0;
 
