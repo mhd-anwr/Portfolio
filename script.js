@@ -5,7 +5,29 @@
 
 gsap.registerPlugin(ScrollTrigger);
 emailjs.init("gz2f1kp7L-ae3kKgV");
-document.addEventListener("DOMContentLoaded", () => {
+    // --------------------------------------------------
+    // 0. TUNED LENIS SMOOTH SCROLLING
+    // --------------------------------------------------
+    const lenis = new Lenis({
+        duration: 1.5,
+        wheelMultiplier: 0.9,
+        smoothWheel: true
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
     // --------------------------------------------------
     // 1. PRELOADER COUNTER & CURTAIN SLIDE REVEAL
     // --------------------------------------------------
