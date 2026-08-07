@@ -2933,9 +2933,9 @@ img {
    ========================================================================== */
 
 .hero-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 650px;
     height: 650px;
     border-radius: 50%;
@@ -2947,7 +2947,7 @@ img {
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 2;
-    will-change: left, top;
+    will-change: transform;
 }
 
 .aurora-glow-wrap {

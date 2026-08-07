@@ -193,10 +193,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // --------------------------------------------------
-        // MOUSE-FOLLOWING AURORA GLOW (.hero-glow WITH EASING)
+        // MOUSE-FOLLOWING AURORA GLOW (.hero-glow GSAP)
         // --------------------------------------------------
+        const glow = document.querySelector(".hero-glow");
+
+        if (glow) {
+            window.addEventListener("mousemove", (e) => {
+                gsap.to(glow, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 1.4,
+                    ease: "power3.out"
+                });
+            });
+        }
+
         const heroSection = document.getElementById("hero");
-        const heroGlow = document.getElementById("hero-glow");
         const orbYellow = document.getElementById("aurora-orb-yellow");
         const orbViolet = document.getElementById("aurora-orb-violet");
         const orbCyan = document.getElementById("aurora-orb-cyan");
@@ -206,15 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const rect = heroSection.getBoundingClientRect();
                 const relX = e.clientX - rect.left;
                 const relY = e.clientY - rect.top;
-
-                if (heroGlow) {
-                    gsap.to(heroGlow, {
-                        left: relX,
-                        top: relY,
-                        duration: 0.6,
-                        ease: "power2.out"
-                    });
-                }
 
                 if (orbYellow) {
                     gsap.to(orbYellow, {
