@@ -269,6 +269,18 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // --------------------------------------------------
+        // 3. TEXT REVEAL (MASK ANIMATION)
+        // --------------------------------------------------
+        if (document.querySelector(".line-mask h1")) {
+            gsap.from(".line-mask h1", {
+                yPercent: 100,
+                duration: 1.3,
+                stagger: 0.1,
+                ease: "power4.out"
+            });
+        }
+
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;

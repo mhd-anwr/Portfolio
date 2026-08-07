@@ -3058,6 +3058,16 @@ img {
     margin: 0 auto 3.5rem auto;
 }
 
+/* Line Mask Text Reveal */
+.line-mask {
+    overflow: hidden;
+    display: block;
+}
+
+.line-mask h1, .line-mask h2 {
+    will-change: transform;
+}
+
 .hero-giant-title {
     font-size: clamp(3.2rem, 8vw, 6.5rem);
     font-weight: 800;
