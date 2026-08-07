@@ -310,6 +310,20 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // --------------------------------------------------
+        // 6. FLOATING SHAPES (.blob1 CONTINUOUS SLOW MOVEMENT)
+        // --------------------------------------------------
+        if (document.querySelector(".blob1")) {
+            gsap.to(".blob1", {
+                y: -40,
+                x: 20,
+                repeat: -1,
+                yoyo: true,
+                duration: 8,
+                ease: "sine.inOut"
+            });
+        }
+
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;
