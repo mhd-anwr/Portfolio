@@ -5,6 +5,8 @@
 
 gsap.registerPlugin(ScrollTrigger);
 emailjs.init("gz2f1kp7L-ae3kKgV");
+
+document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------
     // 0. TUNED LENIS SMOOTH SCROLLING
     // --------------------------------------------------
@@ -37,7 +39,7 @@ emailjs.init("gz2f1kp7L-ae3kKgV");
 
     let progress = 0;
     const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 12) + 5;
+        progress += Math.floor(Math.random() * 15) + 12;
         if (progress >= 100) {
             progress = 100;
             clearInterval(interval);
@@ -45,7 +47,7 @@ emailjs.init("gz2f1kp7L-ae3kKgV");
             if (loaderPercent) loaderPercent.textContent = "100";
 
             setTimeout(() => {
-                initHeroAnimations();
+                if (typeof initHeroAnimations === "function") initHeroAnimations();
 
                 if (preloader) {
                     preloader.style.pointerEvents = "none";
@@ -59,12 +61,27 @@ emailjs.init("gz2f1kp7L-ae3kKgV");
                         }
                     });
                 }
-            }, 300);
+            }, 200);
         } else {
             if (loaderProgress) loaderProgress.style.width = `${progress}%`;
             if (loaderPercent) loaderPercent.textContent = `${progress}`;
         }
-    }, 30);
+    }, 20);
+
+    // Failsafe backup to guarantee preloader hide
+    setTimeout(() => {
+        if (preloader && preloader.style.display !== "none") {
+            preloader.style.pointerEvents = "none";
+            gsap.to(preloader, {
+                yPercent: -100,
+                duration: 0.5,
+                onComplete: () => {
+                    preloader.style.display = "none";
+                    ScrollTrigger.refresh();
+                }
+            });
+        }
+    }, 1200);
 
     // --------------------------------------------------
     // 2. DUAL-RING CUSTOM CURSOR & BG PARALLAX
