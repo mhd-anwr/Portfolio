@@ -812,4 +812,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // --------------------------------------------------
+    // 16. HERO TEXT TYPING ROTATOR
+    // --------------------------------------------------
+    const typingTextEl = document.getElementById("typing-text");
+    if (typingTextEl) {
+        const roles = [
+            "Graphic Design",
+            "UI/UX Design",
+            "Brand Identity",
+            "Visual Stories"
+        ];
+        let roleIndex = 0;
+
+        setInterval(() => {
+            typingTextEl.style.opacity = "0";
+            typingTextEl.style.transform = "translateY(8px)";
+
+            setTimeout(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                typingTextEl.textContent = roles[roleIndex];
+                typingTextEl.style.opacity = "1";
+                typingTextEl.style.transform = "translateY(0)";
+            }, 350);
+        }, 3200);
+    }
 });
