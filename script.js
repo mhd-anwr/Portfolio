@@ -188,9 +188,46 @@ document.addEventListener("DOMContentLoaded", () => {
             const moveY = (mouseY - window.innerHeight / 2) * 0.035;
 
             if (orb1) gsap.to(orb1, { x: moveX * 1.2, y: moveY * 1.2, duration: 2.2, ease: "power1.out" });
-            if (orb2) gsap.to(orb2, { x: -moveX * 0.9, y: -moveY * 0.9, duration: 2.8, ease: "power1.out" });
-            if (orb3) gsap.to(orb3, { x: moveX * 0.6, y: -moveY * 0.6, duration: 3.2, ease: "power1.out" });
+            if (orb2) gsap.to(orb2, { x: -moveX * 1.5, y: -moveY * 1.5, duration: 2.5, ease: "power1.out" });
+            if (orb3) gsap.to(orb3, { x: moveX * 0.8, y: moveY * 0.8, duration: 1.8, ease: "power1.out" });
         });
+
+        // --------------------------------------------------
+        // MOUSE-FOLLOWING AURORA GLOW IN HERO SECTION
+        // --------------------------------------------------
+        const heroSection = document.getElementById("hero");
+        const orbYellow = document.getElementById("aurora-orb-yellow");
+        const orbViolet = document.getElementById("aurora-orb-violet");
+        const orbCyan = document.getElementById("aurora-orb-cyan");
+
+        if (heroSection && orbYellow && orbViolet && orbCyan) {
+            heroSection.addEventListener("mousemove", (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const relX = e.clientX - rect.left;
+                const relY = e.clientY - rect.top;
+
+                gsap.to(orbYellow, {
+                    x: (relX - rect.width / 2) * 0.35,
+                    y: (relY - rect.height / 2) * 0.35,
+                    duration: 1.2,
+                    ease: "power2.out"
+                });
+
+                gsap.to(orbViolet, {
+                    x: (relX - rect.width / 2) * -0.25,
+                    y: (relY - rect.height / 2) * -0.25,
+                    duration: 1.6,
+                    ease: "power2.out"
+                });
+
+                gsap.to(orbCyan, {
+                    x: (relX - rect.width / 2) * 0.15,
+                    y: (relY - rect.height / 2) * 0.15,
+                    duration: 2.0,
+                    ease: "power2.out"
+                });
+            });
+        }
 
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;

@@ -2928,12 +2928,87 @@ img {
     box-shadow: 0 10px 25px rgba(255, 230, 0, 0.4);
 }
 
+/* ==========================================================================
+   MOUSE-FOLLOWING AURORA GLOW BACKGROUND STYLES
+   ========================================================================== */
+
+.aurora-glow-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.aurora-light-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.orb-yellow {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255, 230, 0, 0.45) 0%, rgba(255, 230, 0, 0) 70%);
+    top: 15%;
+    left: 20%;
+    animation: auroraFloat1 12s infinite alternate ease-in-out;
+}
+
+.orb-violet {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0) 70%);
+    top: 25%;
+    right: 15%;
+    animation: auroraFloat2 15s infinite alternate ease-in-out;
+}
+
+.orb-cyan {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.35) 0%, rgba(6, 182, 212, 0) 70%);
+    bottom: 10%;
+    left: 35%;
+    animation: auroraFloat3 10s infinite alternate ease-in-out;
+}
+
+@keyframes auroraFloat1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, -40px) scale(1.15); }
+    100% { transform: translate(-40px, 50px) scale(0.9); }
+}
+
+@keyframes auroraFloat2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-80px, 60px) scale(1.1); }
+    100% { transform: translate(50px, -30px) scale(0.95); }
+}
+
+@keyframes auroraFloat3 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, 40px) scale(1.2); }
+    100% { transform: translate(-60px, -50px) scale(0.85); }
+}
+
 /* 1. Hero Section */
 .fawell-hero {
     padding: 10rem 0 6rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+.fawell-hero .container {
+    position: relative;
+    z-index: 5;
 }
 
 .hero-top-tag {
