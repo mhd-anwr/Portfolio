@@ -25,9 +25,10 @@
     --accent-lime-glow: rgba(212, 255, 0, 0.35);
     --accent-lime-subtle: rgba(212, 255, 0, 0.12);
 
-    /* Typography Stack */
-    --font-sans: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Typography Stack — Plus Jakarta Sans, Syne, Space Grotesk & Instrument Serif */
+    --font-sans: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-display: 'Syne', 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
 
     /* Radius & Spacing */
     --radius-sm: 12px;
