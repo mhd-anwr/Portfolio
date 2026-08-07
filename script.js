@@ -324,6 +324,37 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // --------------------------------------------------
+        // 7. IMAGE HOVER (3D TILT ROTATION ON MOUSEMOVE)
+        // --------------------------------------------------
+        const heroImages = document.querySelectorAll(".hero-image");
+        heroImages.forEach((img) => {
+            const parent = img.parentElement || img;
+
+            parent.addEventListener("mousemove", (e) => {
+                const rect = parent.getBoundingClientRect();
+                const xVal = (e.clientX - rect.left) / rect.width - 0.5;
+                const yVal = (e.clientY - rect.top) / rect.height - 0.5;
+
+                gsap.to(img, {
+                    rotationY: xVal * 12 || 6,
+                    rotationX: -yVal * 12 || -4,
+                    transformPerspective: 1000,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+
+            parent.addEventListener("mouseleave", () => {
+                gsap.to(img, {
+                    rotationY: 0,
+                    rotationX: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+        });
+
         gsap.ticker.add(() => {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;
