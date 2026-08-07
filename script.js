@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (openResumeBtn) openResumeBtn.addEventListener("click", openResumeModal);
     if (heroResumeBtn) heroResumeBtn.addEventListener("click", openResumeModal);
 
-    document.querySelectorAll("#hero-resume-btn, #open-resume-btn, .btn-hero-secondary").forEach((btn) => {
+    document.querySelectorAll("#hero-resume-btn, #open-resume-btn, #resume-download-btn-sec, .btn-download-cv, .btn-hero-secondary").forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
             openResumeModal();

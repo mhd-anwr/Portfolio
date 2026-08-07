@@ -95,79 +95,285 @@
     <main id="smooth-wrapper">
         <div id="smooth-content">
 
-            <!-- 1. Hero Section (arrowsdesign.me exact layout) -->
-            <section class="hero-section" id="hero">
-                <div class="container hero-container">
-
-                    <!-- Left: Hero Headline & Quote Content -->
-                    <div class="hero-content-col">
-                        <div class="hero-eyebrow reveal-item">
-                            <span class="tag-pill">[ GRAPHIC & UI/UX DESIGNER ]</span>
-                        </div>
-
-                        <h1 class="hero-greeting reveal-item">
-                            Hi, I'm a <span class="serif-title">.<span class="typing-rotate-text" id="typing-text">Designer</span></span>
-                        </h1>
-
-                        <p class="hero-subtitle reveal-item">
-                            Designer + Creator — Crafting Minimal, Meaningful Designs
-                        </p>
-
-                        <!-- Stat Badge Counter (arrowsdesign.me) -->
-                        <div class="hero-stats-row reveal-item">
-                            <div class="stat-badge">
-                                <span class="stat-num">3+</span>
-                                <span class="stat-label">Years of experience</span>
-                            </div>
-                            <div class="stat-badge">
-                                <span class="stat-num">15+</span>
-                                <span class="stat-label">Selected Works</span>
-                            </div>
-                            <div class="stat-badge">
-                                <span class="stat-num">100%</span>
-                                <span class="stat-label">Client Satisfaction</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-intro-card reveal-item">
-                            <div class="hero-intro-head">
-                                <h2>Hello, I am <span class="highlight-name">Muhammed Anwar</span></h2>
-                            </div>
-                            <blockquote class="hero-quote">
-                                "Design is not just what it looks like, it's how it works."
-                                <cite>— Steve Jobs</cite>
-                            </blockquote>
-                        </div>
-
-                        <div class="hero-actions reveal-item">
-                            <a href="#work" class="btn-hero btn-hero-primary magnetic" data-cursor-text="EXPLORE">
-                                <span>Explore Projects</span>
-                                <i class="fa-solid fa-arrow-down"></i>
-                            </a>
-                            <button class="btn-hero btn-hero-secondary magnetic" id="hero-resume-btn"
-                                data-cursor-text="CV">
-                                <span>Download CV</span>
-                                <i class="fa-solid fa-download"></i>
-                            </button>
-                        </div>
+            <!-- 1. Hero Section (arrowsdesign.me 1-to-1 exact match) -->
+            <section class="arrows-hero" id="hero">
+                <div class="container">
+                    <div class="hero-eyebrow reveal-item">
+                        <span class="tag-pill">[ GRAPHIC DESIGNER & UI/UX ]</span>
                     </div>
 
-                    <!-- Right: Large Portrait with Ambient Glow -->
-                    <div class="hero-portrait-col reveal-item">
-                        <div class="portrait-wrapper hover-tilt">
-                            <img src="assets/images/portrait.png" alt="Muhammed Anwar — Graphic & UI/UX Designer"
-                                class="portrait-img">
+                    <h1 class="arrows-title reveal-item">
+                        Hi, I'm a <span class="green-text">.<span class="typing-rotate-text" id="typing-text">Designer</span></span>
+                    </h1>
 
-                            <div class="portrait-glass-badge">
-                                <span class="badge-dot"></span>
-                                <div class="badge-text">
-                                    <strong>Muhammed Anwar</strong>
-                                    <span>Graphic Designer & UI/UX Specialist</span>
+                    <p class="arrows-sub reveal-item">
+                        Designer + Creator — Crafting Minimal, Meaningful Designs
+                    </p>
+
+                    <div class="arrows-exp-badge reveal-item">
+                        <span class="exp-number">3</span>
+                        <span class="exp-text">Years of experience</span>
+                    </div>
+
+                    <div class="arrows-intro-block reveal-item">
+                        <h2 class="intro-heading">Hello, I am <span class="green-name">Muhammed Anwar</span></h2>
+                        <blockquote class="intro-quote">
+                            "Design is not just what it looks like, it's how it works."
+                            <cite>— Steve Jobs</cite>
+                        </blockquote>
+                    </div>
+
+                    <div class="hero-actions reveal-item">
+                        <a href="#works" class="btn-arrows-primary magnetic">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                        <button class="btn-arrows-secondary magnetic" id="hero-resume-btn">
+                            <span>Download CV</span>
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Selected Works Section (arrowsdesign.me 1-to-1) -->
+            <section class="arrows-section" id="works">
+                <div class="container">
+                    <div class="arrows-sec-head reveal-item">
+                        <h2 class="arrows-sec-title">Selected Works</h2>
+                        <p class="arrows-sec-desc">A showcased selection of projects that demonstrate my passion for creating intuitive and impactful digital experiences.</p>
+                    </div>
+
+                    <div class="arrows-projects-grid">
+                        <!-- Project Card 1: Graphic Design -->
+                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="tea_cafe">
+                            <div class="project-img-holder">
+                                <img src="assets/images/tea_cafe.png" alt="Graphic Design">
+                                <span class="project-tag-pill">Graphic Design</span>
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Custom & Unique Identity</h3>
+                                <p class="project-subtitle">Tea Café Branding & Visual Systems</p>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 2: Web Design -->
+                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="logos">
+                            <div class="project-img-holder">
+                                <img src="assets/images/logo_collection.jpg" alt="Web Design">
+                                <span class="project-tag-pill">Web Design</span>
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Web Development</h3>
+                                <p class="project-subtitle">Minimal Logos & Web Interfaces</p>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 3: UI/UX Design -->
+                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="social">
+                            <div class="project-img-holder">
+                                <img src="assets/images/social_media.jpg" alt="UI/UX Design">
+                                <span class="project-tag-pill">UI/UX Design</span>
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Product Digital Design</h3>
+                                <p class="project-subtitle">Social Media & App Visuals</p>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 4: Video Edit -->
+                        <article class="arrows-project-card project-card-trigger reveal-item" data-project="posters">
+                            <div class="project-img-holder">
+                                <img src="assets/images/posters.jpg" alt="Video Edit">
+                                <span class="project-tag-pill">Video Edit</span>
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Video Graphic Editing</h3>
+                                <p class="project-subtitle">Creative Posters & Motion Graphics</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Tools & Expertise Section (arrowsdesign.me 1-to-1) -->
+            <section class="arrows-section" id="skills">
+                <div class="container">
+                    <div class="arrows-sec-head reveal-item">
+                        <h2 class="arrows-sec-title">Tools & expertise</h2>
+                    </div>
+
+                    <div class="arrows-tools-grid">
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-layer-group"></i></div>
+                            <h3 class="tool-name">Adobe Creative Suite</h3>
+                            <p class="tool-sub">Photoshop, Illustrator & more</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-brands fa-figma"></i></div>
+                            <h3 class="tool-name">UI/UX Design</h3>
+                            <p class="tool-sub">WordPress, Figma</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
+                            <h3 class="tool-name">Graphic Design</h3>
+                            <p class="tool-sub">Photoshop, Illustrator</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                            <h3 class="tool-name">Illustration</h3>
+                            <p class="tool-sub">Custom graphics</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+                            <h3 class="tool-name">Web Design</h3>
+                            <p class="tool-sub">HTML / CSS / JavaScript</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                            <h3 class="tool-name">Design Systems</h3>
+                            <p class="tool-sub">Reference & Guidelines</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <h3 class="tool-name">AI Tools</h3>
+                            <p class="tool-sub">Latest AI Models</p>
+                        </div>
+
+                        <div class="arrows-tool-card reveal-item">
+                            <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
+                            <h3 class="tool-name">Video Editing</h3>
+                            <p class="tool-sub">Premiere Pro, After Effects, DaVinci Resolve</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Experience & Education Section (arrowsdesign.me 1-to-1) -->
+            <section class="arrows-section" id="resume">
+                <div class="container">
+                    <div class="resume-header-row reveal-item">
+                        <h2 class="arrows-sec-title">Experience & Education</h2>
+                        <button class="btn-download-cv magnetic" id="resume-download-btn-sec"><i class="fa-solid fa-download"></i> Download CV</button>
+                    </div>
+
+                    <div class="arrows-exp-grid">
+                        <!-- Work Experience Column -->
+                        <div class="exp-col reveal-item">
+                            <h3 class="col-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">Web Designer</span>
+                                <span class="exp-company">Independent Practice</span>
+                                <p class="exp-desc">Crafted high-conversion digital experiences for clients, focusing on user accessibility and intuitive UI.</p>
+                            </div>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">Graphic Designer</span>
+                                <span class="exp-company">Creative Collaborations</span>
+                                <p class="exp-desc">Leading design for core product features and brand assets.</p>
+                            </div>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">Freelance</span>
+                                <span class="exp-company">Independent Work</span>
+                                <p class="exp-desc">Started My Design career creating brand identities, logos, and social media visuals.</p>
+                            </div>
+                        </div>
+
+                        <!-- Education Column -->
+                        <div class="exp-col reveal-item">
+                            <h3 class="col-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">Bachelor in Computer Applications</span>
+                                <span class="exp-company">Calicut University</span>
+                                <p class="exp-desc">Pursuing degree in technology, web design, and software fundamentals.</p>
+                            </div>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">Commerce / Higher Secondary</span>
+                                <span class="exp-company">Kerala State Board of Higher Secondary Education</span>
+                                <p class="exp-desc">Completed higher secondary education with strong analytical skills.</p>
+                            </div>
+
+                            <div class="exp-item-card">
+                                <span class="exp-role">SSLC</span>
+                                <span class="exp-company">Kerala State Board of General Education</span>
+                                <p class="exp-desc">Completed secondary school education with distinction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Let's Connect Section (arrowsdesign.me 1-to-1) -->
+            <section class="arrows-section" id="contact">
+                <div class="container">
+                    <div class="arrows-sec-head reveal-item">
+                        <h2 class="arrows-sec-title">Let's Connect</h2>
+                        <p class="arrows-sec-desc">Have a project in mind? I'd love to hear about it.</p>
+                    </div>
+
+                    <div class="connect-wrapper">
+                        <div class="connect-info-col reveal-item">
+                            <h3>Get in Touch</h3>
+                            <p class="connect-intro-text">Whether you have a question, want to discuss a project, or just want to say hi, I'll try my best to get back to you as soon as possible!</p>
+
+                            <div class="connect-info-list">
+                                <a href="mailto:mhd.anwrofcl@gmail.com" class="connect-info-card">
+                                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                                    <div>
+                                        <span class="card-label">Email</span>
+                                        <span class="card-val">mhd.anwrofcl@gmail.com</span>
+                                    </div>
+                                </a>
+
+                                <a href="https://wa.me/918089737635" class="connect-info-card" target="_blank">
+                                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                                    <div>
+                                        <span class="card-label">Phone / WhatsApp</span>
+                                        <span class="card-val">+91 8089737635</span>
+                                    </div>
+                                </a>
+
+                                <div class="connect-info-card">
+                                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div>
+                                        <span class="card-label">Location</span>
+                                        <span class="card-val">Malappuram, Kerala</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="connect-form-col reveal-item">
+                            <form id="contact-form" class="arrows-form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit-form" id="submit-btn">
+                                    <span>Send Message</span>
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
 
