@@ -25,10 +25,10 @@
     --accent-lime-glow: rgba(212, 255, 0, 0.35);
     --accent-lime-subtle: rgba(212, 255, 0, 0.12);
 
-    /* Typography Stack — Plus Jakarta Sans, Syne, Space Grotesk & Instrument Serif */
-    --font-sans: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Typography Stack — Bricolage Grotesque Primary */
+    --font-sans: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Sora', sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
-    --font-display: 'Syne', 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'Bricolage Grotesque', 'Syne', 'Space Grotesk', sans-serif;
 
     /* Radius & Spacing */
     --radius-sm: 12px;
