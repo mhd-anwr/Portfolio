@@ -5,25 +5,25 @@
    ========================================================================== */
 
 :root {
-    /* Color Combination — Matte Dark Obsidian & Electric Cyber Lime (#B5F82B) */
-    --bg-main: #08090C;
-    --bg-subtle: #0E1017;
-    --bg-card: #13151F;
-    --bg-card-hover: #191D2B;
+    /* LIGHT MODE COLOR COMBO — Minimal Alabaster & Vibrant Deep Lime */
+    --bg-main: #F8FAFC;
+    --bg-subtle: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
 
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-hover: #B5F82B;
-    --border-lime: #B5F82B;
+    --border-light: rgba(15, 23, 42, 0.12);
+    --border-hover: #0F172A;
+    --border-lime: #65A300;
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
     --text-muted: #64748B;
 
-    /* Electric Cyber Lime Accent */
-    --accent-lime: #B5F82B;
-    --accent-lime-dark: #A3E635;
-    --accent-lime-glow: rgba(181, 248, 43, 0.35);
-    --accent-lime-subtle: rgba(181, 248, 43, 0.12);
+    /* Light Mode Lime Accent */
+    --accent-lime: #84CC16;
+    --accent-lime-dark: #65A300;
+    --accent-lime-glow: rgba(132, 204, 22, 0.35);
+    --accent-lime-subtle: rgba(132, 204, 22, 0.12);
 
     /* Typography Stack — Plus Jakarta Sans, Syne, Space Grotesk & Instrument Serif */
     --font-sans: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -40,25 +40,26 @@
     --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Dark Mode Theme Variables */
+/* DARK MODE COLOR COMBO — Obsidian Matte Black & Electric Cyber Lime (#B5F82B) */
 [data-theme="dark"] {
-    --bg-main: #0B0C0E;
-    --bg-subtle: #121419;
-    --bg-card: rgba(22, 25, 32, 0.85);
-    --bg-card-hover: rgba(30, 34, 43, 0.95);
+    --bg-main: #08090C;
+    --bg-subtle: #0E1017;
+    --bg-card: #13151F;
+    --bg-card-hover: #191D2B;
 
-    --border-light: rgba(255, 255, 255, 0.1);
-    --border-hover: rgba(255, 255, 255, 0.25);
-    --border-lime: rgba(212, 255, 0, 0.7);
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-hover: #B5F82B;
+    --border-lime: #B5F82B;
 
     --text-primary: #FFFFFF;
-    --text-secondary: #A3A8B5;
-    --text-muted: #6C7280;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
 
-    --accent-lime: #D4FF00;
-    --accent-lime-dark: #D4FF00;
-    --accent-lime-glow: rgba(212, 255, 0, 0.45);
-    --accent-lime-subtle: rgba(212, 255, 0, 0.15);
+    /* Dark Mode Electric Cyber Lime Accent */
+    --accent-lime: #B5F82B;
+    --accent-lime-dark: #A3E635;
+    --accent-lime-glow: rgba(181, 248, 43, 0.35);
+    --accent-lime-subtle: rgba(181, 248, 43, 0.12);
 }
 
 /* Reset & Global Base */
